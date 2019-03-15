@@ -19,8 +19,10 @@ public class Player : Entity {
 
     void Update() {
         // Movement Input
-        Vector2 movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector2 movementVelocity = movementInput.normalized * (currentSpeed * movementInput);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        Vector2 movementVelocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
         controller.Move(movementVelocity);
 
         // Aiming
@@ -46,7 +48,5 @@ public class Player : Entity {
         //I like normalizing to [0,360) myself, but this is optional..
         if (angleDegrees < 0)
             angleDegrees += 360;
-
-        Debug.Log(angleDegrees);
     }
 }
