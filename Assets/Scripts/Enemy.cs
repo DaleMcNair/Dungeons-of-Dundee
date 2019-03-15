@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Entity {
     Entity entity;
 
-    private void Start() {
+    protected override void Start() {
         entity = GetComponent<Entity>();
     }
 
