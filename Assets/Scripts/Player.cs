@@ -5,11 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class Player : Entity {
     PlayerController controller;
+    public float playerFacingAngle;
 
-    // public Animator animator; // Placeholder for old mate McFifffffeeigh
-    // public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     protected override void Start() {
+        playerFacingAngle = 270f;
         base.Start();
     }
 
@@ -25,16 +26,21 @@ public class Player : Entity {
         Vector2 movementVelocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
         controller.Move(movementVelocity);
 
-        // Aiming
-        GetMousePosition();
+        // Movement Direction stuff
+        playerFacingAngle = GetFacingDirection();
 
-        // Placeholders once sprites are dun
-        //animator.SetFloat("Horizontal", movement.x);
-        //animator.SetFloat("Vertical", movement.y);
-        //animator.SetFloat("Magnitude", movement.z);
+        // Animator cues
+        animator.SetFloat("FacingDirection", playerFacingAngle);
+
+        if (horizontal != 0 || vertical != 0) {
+            animator.SetBool("IsMoving", true);
+        }
+        else {
+            animator.SetBool("IsMoving", false);
+        }
     }
 
-    void GetMousePosition() {
+    float GetFacingDirection() {
         //get the vector representing the mouse's position relative to the point...
         Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
@@ -48,5 +54,7 @@ public class Player : Entity {
         //I like normalizing to [0,360) myself, but this is optional..
         if (angleDegrees < 0)
             angleDegrees += 360;
+
+        return angleDegrees;
     }
 }
