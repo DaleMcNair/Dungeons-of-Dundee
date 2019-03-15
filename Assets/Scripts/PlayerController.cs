@@ -4,21 +4,26 @@ using UnityEngine;
 
 public enum PlayerState { Idle, Moving };
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour {
 
-    public float moveSpeed = 3f;
-    public float dodgeSpeed = 5f;
+    Vector2 velocity;
+    Rigidbody2D myRigidbody;
 
-    // public Animator animator; // Placeholder for old mate McFifffffeeigh
-    // public SpriteRenderer spriteRenderer;
+    void Start() {
+        myRigidbody = GetComponent<Rigidbody2D>();
+    }
 
-    void Update() {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+    // Use fixed delta to account for dropped frames when moving our character
+    void FixedUpdate() {
+        myRigidbody.MovePosition(myRigidbody.position + velocity * Time.fixedDeltaTime);
+    }
 
-        //animator.SetFloat("Horizontal", movement.x);
-        //animator.SetFloat("Vertical", movement.y);
-        //animator.SetFloat("Magnitude", movement.z);
+    public void Move(Vector2 _velocity) {
+        velocity = _velocity;
+    }
 
-        transform.position = transform.position + (movement * moveSpeed) * Time.deltaTime;
+    public void LookAt(Vector2 lookPoint) {
+        transform.LookAt(lookPoint);
     }
 }

@@ -2,17 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class Entity : MonoBehaviour {
+    public float startingHealth, maxHealth;
+    public float currentHealth { get; protected set; }
+
+    protected bool dead;
+
+    public float currentSpeed; // Used incase we cast movement imparing effects on the entity
+    public float defaultSpeed;
+
+    public event System.Action OnDeath;
+
+    // public ParticleSystem deathParticle --- Placeholder lol, add this Sprint2
+
+    protected virtual void Start() {
+        currentHealth = startingHealth;
+        currentSpeed = defaultSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public virtual void TakeHit(float amount, Vector2 hitPoint, Vector2 hitDirection) {
+        TakeDamage(amount);
+    }
+
+    public virtual void TakeDamage(float amount) {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0 && !dead) {
+            Die();
+        }
+    }
+
+    void RecoverHealth(int amount) {
+        currentHealth += amount;
+
+        if (currentHealth > maxHealth) {
+            currentHealth = maxHealth;
+        }
+    }
+
+    void IncreaseMaxHealth(int amount) {
+        maxHealth += amount;
+    }
+
+    void DecreaseMaxHealth(int amount) {
+        maxHealth -= amount;
+    }
+
+    [ContextMenu("Self Destruct")]
+    void Die() {
+        // Bad luck :(
+        // Add death particles here, for now just destroy gameobject
+
+        dead = true;
+        if (OnDeath != null) {
+            OnDeath();
+        }
+
+        GameObject.Destroy(gameObject);
     }
 }
