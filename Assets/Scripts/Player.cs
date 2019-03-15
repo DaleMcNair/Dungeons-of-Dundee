@@ -20,13 +20,33 @@ public class Player : Entity {
     void Update() {
         // Movement Input
         Vector2 movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector2 movementVelocity = movementInput.normalized * currentSpeed;
+        Vector2 movementVelocity = movementInput.normalized * (currentSpeed * movementInput);
         controller.Move(movementVelocity);
-        Debug.Log(movementInput);
+
+        // Aiming
+        GetMousePosition();
 
         // Placeholders once sprites are dun
         //animator.SetFloat("Horizontal", movement.x);
         //animator.SetFloat("Vertical", movement.y);
         //animator.SetFloat("Magnitude", movement.z);
+    }
+
+    void GetMousePosition() {
+        //get the vector representing the mouse's position relative to the point...
+        Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        //use atan2 to get the angle; Atan2 returns radians
+        float angleRadians = Mathf.Atan2(v.y, v.x);
+
+        //convert to degrees
+        float angleDegrees = angleRadians * Mathf.Rad2Deg;
+
+        //angleDegrees will be in the range (-180,180].
+        //I like normalizing to [0,360) myself, but this is optional..
+        if (angleDegrees < 0)
+            angleDegrees += 360;
+
+        Debug.Log(angleDegrees);
     }
 }
