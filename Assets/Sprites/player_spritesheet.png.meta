@@ -45,6 +45,9 @@ TextureImporter:
     21300080: player_hammer_lightning
     21300082: lightning_projectile_1
     21300084: lightning_projectile_2
+    21300086: player_left_idle
+    21300088: player_left_walk
+    21300090: player_left_shoot
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -191,7 +194,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 210
+        y: 212
         width: 27
         height: 42
       alignment: 9
@@ -210,8 +213,8 @@ TextureImporter:
       name: player_dead
       rect:
         serializedVersion: 2
-        x: 138
-        y: 208
+        x: 137
+        y: 210
         width: 39
         height: 44
       alignment: 9
@@ -275,7 +278,7 @@ TextureImporter:
         width: 32
         height: 33
       alignment: 9
-      pivot: {x: 0.27742004, y: 0.25485414}
+      pivot: {x: 0.27319217, y: 0.3122526}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -351,7 +354,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 94
-        y: 139
+        y: 136
         width: 33
         height: 40
       alignment: 9
@@ -370,8 +373,8 @@ TextureImporter:
       name: player_blood
       rect:
         serializedVersion: 2
-        x: 143
-        y: 170
+        x: 186
+        y: 216
         width: 29
         height: 33
       alignment: 0
@@ -462,6 +465,66 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 443c649cb95af0d4185faa972dddb6e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_left_idle
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 177
+        width: 27
+        height: 32
+      alignment: 9
+      pivot: {x: 0.4949892, y: 0.28437328}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7551636ae872b4b4c9da47267d2c5a1a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_left_walk
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 177
+        width: 28
+        height: 32
+      alignment: 9
+      pivot: {x: 0.51932853, y: 0.2674613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af2b28ad9ca7b94ea24b964f4b3495b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_left_shoot
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 177
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.7029433, y: 0.27040794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62846b3915f96774695e15346ef6d16e
       vertices: []
       indices: 
       edges: []
