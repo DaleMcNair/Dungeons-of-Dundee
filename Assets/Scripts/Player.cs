@@ -48,7 +48,9 @@ public class Player : Entity {
 
         if (horizontal != 0 || vertical != 0) {
             animator.SetBool("IsMoving", true);
-            animator.SetFloat("FacingDirection", playerFacingAngle);
+            animator.SetFloat("DirectionX", horizontal);
+            animator.SetFloat("DirectionY", vertical);
+
         }
         else {
             animator.SetBool("IsMoving", false);
