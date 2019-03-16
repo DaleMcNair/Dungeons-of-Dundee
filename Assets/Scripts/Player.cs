@@ -28,7 +28,6 @@ public class Player : Entity {
         float vertical = Input.GetAxis("Vertical");
 
         Vector2 movementVelocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
-        controller.Move(movementVelocity);
 
         // Attacking Input
         if (Input.GetMouseButtonDown(0)) {
@@ -49,6 +48,8 @@ public class Player : Entity {
         else {
             animator.SetBool("IsMoving", false);
         }
+
+        controller.Move(movementVelocity);
     }
 
     float GetFacingDirection(Vector2 vel) {

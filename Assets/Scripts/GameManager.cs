@@ -18,8 +18,20 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            gameState = gameState == GameState.Paused ? GameState.Playing : GameState.Paused;
+            SetState(gameState == GameState.Paused ? GameState.Playing : GameState.Paused);
             Debug.Log(gameState);
+        }
+    }
+
+    void SetState(GameState state) {
+        if (state == GameState.Paused) {
+            gameState = GameState.Paused;
+            Time.timeScale = 0f;
+        }
+
+        if (state == GameState.Playing) {
+            gameState = GameState.Playing;
+            Time.timeScale = 1f;
         }
     }
 }
