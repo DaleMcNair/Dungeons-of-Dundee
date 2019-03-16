@@ -27,7 +27,7 @@ public class Player : Entity {
         controller.Move(movementVelocity);
 
         // Movement Direction stuff
-        playerFacingAngle = GetFacingDirection();
+        playerFacingAngle = GetFacingDirection(movementVelocity);
 
         // Animator cues
         animator.SetFloat("FacingDirection", playerFacingAngle);
@@ -40,20 +40,16 @@ public class Player : Entity {
         }
     }
 
-    float GetFacingDirection() {
-        //get the vector representing the mouse's position relative to the point...
-        Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-        //use atan2 to get the angle; Atan2 returns radians
-        float angleRadians = Mathf.Atan2(v.y, v.x);
+    float GetFacingDirection(Vector2 vel) {
+        // Atan2 returns radians
+        float angleRadians = Mathf.Atan2(vel.y, vel.x);
 
         //convert to degrees
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
 
-        //angleDegrees will be in the range (-180,180].
-        //I like normalizing to [0,360) myself, but this is optional..
-        if (angleDegrees < 0)
+        if (angleDegrees < 0) {
             angleDegrees += 360;
+        }
 
         return angleDegrees;
     }
