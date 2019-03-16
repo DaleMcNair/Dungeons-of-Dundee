@@ -25,10 +25,11 @@ TextureImporter:
     21300040: player_up_foot_walk
     21300042: player_side_hammer
     21300044: player_up_hammer
-    21300046: player_attack_hammer
+    21300046: player_attack_hammer_head
     21300048: player_side_foot_walk_front
     21300050: player_dead
     21300052: player_dead_blood
+    21300054: player_attack_hammer_handle
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -571,13 +572,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_attack_hammer
+      name: player_attack_hammer_head
       rect:
         serializedVersion: 2
         x: 4
-        y: 12
+        y: 25
         width: 15
-        height: 24
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -619,7 +620,7 @@ TextureImporter:
         width: 39
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -639,13 +640,33 @@ TextureImporter:
         width: 29
         height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 49b0eae439691ac4a84776cb4aa3a445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_attack_hammer_handle
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 12
+        width: 6
+        height: 13
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b128c17f96c5b3d4e9323c7f961e5175
       vertices: []
       indices: 
       edges: []
