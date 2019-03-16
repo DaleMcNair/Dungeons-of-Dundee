@@ -27,6 +27,8 @@ TextureImporter:
     21300044: player_up_hammer
     21300046: player_attack_hammer
     21300048: player_side_foot_walk_front
+    21300050: player_dead
+    21300052: player_dead_blood
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -597,13 +599,53 @@ TextureImporter:
         width: 8
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 6b32af9a57726ec46aabdce5f7dc7197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dead
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 38
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2ad4601638f84408252c7a6b5448f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dead_blood
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 2
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49b0eae439691ac4a84776cb4aa3a445
       vertices: []
       indices: 
       edges: []
