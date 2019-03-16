@@ -53,7 +53,7 @@ public class Player : Entity {
         // Atan2 returns radians
         float angleRadians = Mathf.Atan2(vel.y, vel.x);
 
-        //convert to degrees
+        // Convert to degrees
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
 
         if (angleDegrees < 0) {
@@ -61,5 +61,10 @@ public class Player : Entity {
         }
 
         return angleDegrees;
+    }
+
+    public override void Die() {
+        animator.SetBool("IsDead", true);
+        base.Die();
     }
 }

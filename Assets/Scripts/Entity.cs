@@ -11,6 +11,8 @@ public class Entity : MonoBehaviour, IDamageable {
     public float currentSpeed; // Used incase we cast movement imparing effects on the entity
     public float defaultSpeed;
 
+    public GameObject corpse;
+
     public event System.Action OnDeath;
 
     // public ParticleSystem deathParticle --- Placeholder lol, add this Sprint2
@@ -51,15 +53,14 @@ public class Entity : MonoBehaviour, IDamageable {
     }
 
     [ContextMenu("Self Destruct")]
-    void Die() {
+    public virtual void Die() {
         // Bad luck :(
         // Add death particles here, for now just destroy gameobject
 
         dead = true;
-        if (OnDeath != null) {
-            OnDeath();
-        }
+        OnDeath?.Invoke();
 
-        GameObject.Destroy(gameObject);
+        Instantiate(corpse, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

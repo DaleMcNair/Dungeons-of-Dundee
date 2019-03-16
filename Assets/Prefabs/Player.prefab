@@ -559,13 +559,13 @@ GameObject:
   - component: {fileID: 1570286908566533368}
   - component: {fileID: 1570286908566533366}
   - component: {fileID: 1570286908566533367}
-  - component: {fileID: 1570286908566533364}
   - component: {fileID: 1570286908566533370}
   - component: {fileID: 5309048554547505818}
   - component: {fileID: 341332734}
+  - component: {fileID: 81539054392271994}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,38 +618,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dacba36cd2d23594196b24489454d504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
-  maxHealth: 0
+  startingHealth: 5
+  maxHealth: 5
   currentSpeed: 0
   defaultSpeed: 4
   playerFacingAngle: 0
   animator: {fileID: 1570286909431427027}
---- !u!61 &1570286908566533364
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570286908566533373}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.008318424, y: -1.339294}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2162828, y: 1.0499125}
-  m_EdgeRadius: 0
 --- !u!50 &1570286908566533370
 Rigidbody2D:
   serializedVersion: 4
@@ -702,6 +676,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30560a56c5641ea469898e91a0e57a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &81539054392271994
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570286908566533373}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.0940952}
+  serializedVersion: 2
+  m_Radius: 0.64270973
 --- !u!1 &1570286908628559907
 GameObject:
   m_ObjectHideFlags: 0
