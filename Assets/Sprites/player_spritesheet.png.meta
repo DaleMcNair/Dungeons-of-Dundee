@@ -10,7 +10,7 @@ TextureImporter:
     21300010: player_down_arm_extended
     21300012: player_down_body
     21300014: player_down_foot_idle
-    21300016: player_spritesheet_0
+    21300016: player_down_idle
     21300018: player_down_foot_walk
     21300020: player_down_hammer
     21300022: player_side_arm_idle
@@ -30,6 +30,21 @@ TextureImporter:
     21300050: player_dead
     21300052: player_dead_blood
     21300054: player_attack_hammer_handle
+    21300056: player_down_walk_L
+    21300058: player_down_walk_R
+    21300060: player_down_shoot
+    21300062: player_right_idle
+    21300064: Player_right_walk
+    21300066: player_right_shoot
+    21300068: player_up_idle
+    21300070: player_up_walk_L
+    21300072: player_up_walk_R
+    21300074: player_up_shoot
+    21300076: player_blood
+    21300078: player_hammer
+    21300080: player_hammer_lightning
+    21300082: lightning_projectile_1
+    21300084: lightning_projectile_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -112,501 +127,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_down_head
+      name: player_down_idle
       rect:
         serializedVersion: 2
-        x: 6
-        y: 108
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a7e315733b954445b5febaaedfda7e6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_right_head
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 108
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34fc09d273d8cb146a40df2520db0a9e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_left_head
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 108
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40b5048d3c3df484ba22126893484d33
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_head
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 108
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e78d487a147579a41a4e8308b14fff62
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_down_arm_idle
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 92
-        width: 11
-        height: 14
+        x: 0
+        y: 216
+        width: 32
+        height: 36
       alignment: 9
-      pivot: {x: 0.50342435, y: 0.8147904}
+      pivot: {x: 0.59342855, y: 0.37542853}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea8829986c9f7a2439c569cc25f2e72d
+      spriteID: 61da4e21e7dbe8d49afa31731d7d5443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_down_arm_extended
+      name: player_down_walk_L
       rect:
         serializedVersion: 2
-        x: 18
-        y: 90
-        width: 16
-        height: 15
+        x: 33
+        y: 217
+        width: 32
+        height: 36
       alignment: 9
-      pivot: {x: 0.65537715, y: 0.823938}
+      pivot: {x: 0.5906806, y: 0.37542853}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e6d13c31530f63498174cbd2e79d74b
+      spriteID: 27b290e0b8682dd42b4c1fc0c52183ad
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_down_body
+      name: player_down_walk_R
       rect:
         serializedVersion: 2
-        x: 3
-        y: 70
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 03a23915e07fdca47885388c0d1d3f2f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_down_foot_idle
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 61
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eea5e103eadcc774893cf5ed2ae44d2d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_spritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 60
-        width: 7
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f77973ba61a7f6240a4eb9ac20204e76
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_down_foot_walk
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 60
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53951f35225a5f24c822d3c278a48821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_down_hammer
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 39
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cacbeacf34b4a81428514a20209c7fee
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_side_arm_idle
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 91
-        width: 10
-        height: 13
+        x: 67
+        y: 217
+        width: 32
+        height: 36
       alignment: 9
-      pivot: {x: 0.46609992, y: 0.7868506}
+      pivot: {x: 0.59071136, y: 0.37366527}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb2cb38bb02e02a4c8bd44aa25ea762b
+      spriteID: b67778fce72630d4e8090920681431bb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_side_arm_extended
+      name: player_down_shoot
       rect:
         serializedVersion: 2
-        x: 52
-        y: 94
-        width: 19
-        height: 9
+        x: 100
+        y: 210
+        width: 27
+        height: 42
       alignment: 9
-      pivot: {x: 0.22641774, y: 0.7050781}
+      pivot: {x: 0.5162837, y: 0.4602207}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbfbcf8e4b7d1e6439b943ebb126cbcf
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_arm_idle
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 91
-        width: 12
-        height: 14
-      alignment: 9
-      pivot: {x: 0.46233368, y: 0.8040281}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b306eef0ec950e74a8edcac44ce1632e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_arm_extended
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 90
-        width: 14
-        height: 17
-      alignment: 9
-      pivot: {x: 0.18252018, y: 0.26735058}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14a4ede6fe05cfc47a565d35f4a5e209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_right_body
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 73
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb8972aa3523ee94099f7d169897ed6c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_body
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 70
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 840168b69608ea845ba9a09f5f6dba29
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_side_foot_idle
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 61
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e65839f32aa60d439708731d2ae9c68
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_side_foot_walk_back
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 61
-        width: 5
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb640f65ab1025b4fa9e67bd139025d6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_foot_idle
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 60
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68adc689d74569240bdaaf8589f3288c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_foot_walk
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 60
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68acf39f7ebabaa409273b18fa06366b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_side_hammer
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 39
-        width: 25
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d13c4354dc59e714c854f48010889049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_up_hammer
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 43
-        width: 5
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 228bbd392625eaa4f8131725205cb746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_attack_hammer_head
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 25
-        width: 15
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5868a908e74fa9d478032902d1120806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_side_foot_walk_front
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 61
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b32af9a57726ec46aabdce5f7dc7197
+      spriteID: cb2771df3c65a26488faaf347516868e
       vertices: []
       indices: 
       edges: []
@@ -615,28 +210,168 @@ TextureImporter:
       name: player_dead
       rect:
         serializedVersion: 2
-        x: 87
-        y: 38
+        x: 138
+        y: 208
         width: 39
         height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.53607494, y: 0.37009916}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba2ad4601638f84408252c7a6b5448f1
+      spriteID: ded7797a7b880504f89963831e30201f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_dead_blood
+      name: player_right_idle
       rect:
         serializedVersion: 2
-        x: 73
-        y: 2
+        x: 3
+        y: 179
+        width: 28
+        height: 33
+      alignment: 9
+      pivot: {x: 0.4842977, y: 0.31614038}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff208e7d67040c41993bc5f42d48142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_right_walk
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 179
+        width: 28
+        height: 33
+      alignment: 9
+      pivot: {x: 0.48115715, y: 0.32146984}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ee97bff00f0ff643900acdbe5a7e43b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_shoot
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 179
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.27742004, y: 0.25485414}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438282586a8988440a6e3217d0274b0c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_up_idle
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 138
+        width: 27
+        height: 32
+      alignment: 9
+      pivot: {x: 0.4772026, y: 0.31314278}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5150b6cf12a719c49a962cb7bc5a0061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_up_walk_L
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 136
+        width: 27
+        height: 35
+      alignment: 9
+      pivot: {x: 0.47720253, y: 0.36433235}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a53717b327f771d41a66d13e97ae8fbf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_up_walk_R
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 136
+        width: 27
+        height: 35
+      alignment: 9
+      pivot: {x: 0.47720253, y: 0.37186933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fb953a114bc834bb5eec7d9d14c434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_up_shoot
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 139
+        width: 33
+        height: 40
+      alignment: 9
+      pivot: {x: 0.38808557, y: 0.253788}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab37648e0457cc4e8bf8e0b6049e7bd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_blood
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 170
         width: 29
         height: 33
       alignment: 0
@@ -646,27 +381,87 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49b0eae439691ac4a84776cb4aa3a445
+      spriteID: 566e24de8b66e9b4dac3c0730d78baa8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_attack_hammer_handle
+      name: player_hammer
       rect:
         serializedVersion: 2
         x: 10
-        y: 12
-        width: 6
-        height: 13
-      alignment: 8
-      pivot: {x: 1, y: 0}
+        y: 100
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b128c17f96c5b3d4e9323c7f961e5175
+      spriteID: 79887c20ef61a234093b2b8bad01a4e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_hammer_lightning
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 113
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a592044a55ecc364f9bbcb93ef4a616c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lightning_projectile_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 118
+        width: 29
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e1934e881631e43874f5954b93c465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lightning_projectile_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 109
+        width: 30
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 443c649cb95af0d4185faa972dddb6e1
       vertices: []
       indices: 
       edges: []
