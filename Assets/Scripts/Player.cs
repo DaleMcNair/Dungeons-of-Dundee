@@ -32,11 +32,12 @@ public class Player : Entity {
 
         // Attacking Input
         if (Input.GetMouseButtonDown(0)) {
-            if (EventSystem.current.IsPointerOverGameObject()) {
+            if (EventSystem.current && EventSystem.current.IsPointerOverGameObject()) {
                 return;
-            };
-
-            weaponController.Attack(movementVelocity);
+            }
+            else {
+                weaponController.Attack(movementVelocity);
+            }
         }
 
         // Movement Direction stuff
