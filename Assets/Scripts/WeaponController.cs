@@ -10,8 +10,9 @@ public class WeaponController : MonoBehaviour {
         equippedWeapon = GetComponent<Weapon>();
     }
 
-    public void OnTriggerHold() {
-        // Potential to add a charge here?
+    public void Attack(Vector2 facing) {
+        // Potential to do charged holddown attacks as well as regular attacks
+        equippedWeapon.Attack(facing);
     }
 
     public void Aim(Vector2 aimPoint) {

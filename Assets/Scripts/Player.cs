@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(WeaponController))]
 public class Player : Entity {
     PlayerController controller;
+    WeaponController weaponController;
+
     public float playerFacingAngle;
 
     public Animator animator;
@@ -16,6 +19,7 @@ public class Player : Entity {
 
     private void Awake() {
         controller = GetComponent<PlayerController>();
+        weaponController = GetComponent<WeaponController>();
     }
 
     void Update() {
@@ -25,6 +29,11 @@ public class Player : Entity {
 
         Vector2 movementVelocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
         controller.Move(movementVelocity);
+
+        // Attacking Input
+        if (Input.GetMouseButtonDown(0)) {
+            weaponController.Attack(movementVelocity);
+        }
 
         // Movement Direction stuff
         playerFacingAngle = GetFacingDirection(movementVelocity);
