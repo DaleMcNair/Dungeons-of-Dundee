@@ -20,12 +20,13 @@ TextureImporter:
     21300030: player_right_body
     21300032: player_up_body
     21300034: player_side_foot_idle
-    21300036: player_side_foot_walk
+    21300036: player_side_foot_walk_back
     21300038: player_up_foot_idle
     21300040: player_up_foot_walk
     21300042: player_side_hammer
     21300044: player_up_hammer
     21300046: player_attack_hammer
+    21300048: player_side_foot_walk_front
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -468,12 +469,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_side_foot_walk
+      name: player_side_foot_walk_back
       rect:
         serializedVersion: 2
         x: 42
         y: 61
-        width: 13
+        width: 5
         height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -583,6 +584,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5868a908e74fa9d478032902d1120806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_side_foot_walk_front
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 61
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b32af9a57726ec46aabdce5f7dc7197
       vertices: []
       indices: 
       edges: []
