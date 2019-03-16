@@ -8,30 +8,24 @@ public enum GameState {
 }
 
 public class GameManager : MonoBehaviour {
+    public static GameManager instance; // Singleton
     public GameState gameState = new GameState();
 
-    // Start is called before the first frame update
+    private void Awake() {
+        if (instance != null) {
+            Destroy(gameObject);
+        }
+        else {
+            instance = this; // Set singleton
+            DontDestroyOnLoad(gameObject); // Persist this object even through scene changes
+        }
+    }
+
     void Start() {
         gameState = GameState.Playing;
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            SetState(gameState == GameState.Paused ? GameState.Playing : GameState.Paused);
-            Debug.Log(gameState);
-        }
-    }
-
-    void SetState(GameState state) {
-        if (state == GameState.Paused) {
-            gameState = GameState.Paused;
-            Time.timeScale = 0f;
-        }
-
-        if (state == GameState.Playing) {
-            gameState = GameState.Playing;
-            Time.timeScale = 1f;
-        }
+    public void SetState(GameState state) {
+        gameState = state;
     }
 }

@@ -19,7 +19,6 @@ public class Weapon : MonoBehaviour {
     //}
 
     public void Attack(Vector2 facing) {
-        Debug.Log("attacking lol");
         Vector2 swingDirection = new Vector2(attackPosition.position.x, attackPosition.position.y) + facing.normalized;
         if (Time.time > nextAttackTime) {
             nextAttackTime = Time.time + timeBetweenSwings / 1000;

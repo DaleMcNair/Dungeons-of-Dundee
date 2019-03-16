@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(WeaponController))]
@@ -31,6 +32,10 @@ public class Player : Entity {
 
         // Attacking Input
         if (Input.GetMouseButtonDown(0)) {
+            if (EventSystem.current.IsPointerOverGameObject()) {
+                return;
+            };
+
             weaponController.Attack(movementVelocity);
         }
 
