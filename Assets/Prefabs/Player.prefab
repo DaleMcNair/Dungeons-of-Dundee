@@ -622,6 +622,7 @@ MonoBehaviour:
   maxHealth: 5
   currentSpeed: 0
   defaultSpeed: 4
+  corpse: {fileID: 0}
   playerFacingAngle: 0
   animator: {fileID: 1570286909431427027}
 --- !u!50 &1570286908566533370
@@ -664,6 +665,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackPosition: {fileID: 2604802969546012025}
+  isAttacking: 0
+  animator: {fileID: 1570286909431427027}
 --- !u!114 &341332734
 MonoBehaviour:
   m_ObjectHideFlags: 0

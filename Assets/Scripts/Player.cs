@@ -9,6 +9,7 @@ public class Player : Entity {
     WeaponController weaponController;
 
     public float playerFacingAngle;
+    public float lastFacingAngle;
 
     public Animator animator;
 
@@ -36,10 +37,12 @@ public class Player : Entity {
         }
 
         // Movement Direction stuff
+
         playerFacingAngle = GetFacingDirection(movementVelocity);
+        lastFacingAngle = playerFacingAngle != 0 ? playerFacingAngle : lastFacingAngle;
 
         // Animator cues
-        animator.SetFloat("FacingDirection", playerFacingAngle);
+        animator.SetFloat("FacingDirection", playerFacingAngle == 0 ? lastFacingAngle : playerFacingAngle);
 
         if (horizontal != 0 || vertical != 0) {
             animator.SetBool("IsMoving", true);

@@ -10,18 +10,20 @@ public class Weapon : MonoBehaviour {
     public float attackRange;
     public LayerMask enemyLayerMask;
     public Transform attackPosition;
+    public bool isAttacking;
 
-    //Animator animator;
+    public Animator animator;
 
-    private void Awake() {
-        //animator = GetComponent<Animator>();
-    }
+    //private void Awake() {
+    //    animator = GetComponent<Animator>();
+    //}
 
     public void Attack(Vector2 facing) {
+        Debug.Log("attacking lol");
         Vector2 swingDirection = new Vector2(attackPosition.position.x, attackPosition.position.y) + facing.normalized;
         if (Time.time > nextAttackTime) {
             nextAttackTime = Time.time + timeBetweenSwings / 1000;
-
+            animator.SetTrigger("Attacking");
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(swingDirection, attackRange, enemyLayerMask);
 
             for (int i = 0; i < enemiesToDamage.Length; i++) {
@@ -31,6 +33,7 @@ public class Weapon : MonoBehaviour {
                     damageableObject.TakeHit(damage, swingDirection, transform.forward);
                 }
             }
+
             // Swing our weapon here...
             // Play a swing sound here...
         }
