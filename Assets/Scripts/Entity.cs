@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour {
+public class Entity : MonoBehaviour, IDamageable {
     public float startingHealth, maxHealth;
     public float currentHealth { get; protected set; }
 
@@ -21,10 +21,12 @@ public class Entity : MonoBehaviour {
     }
 
     public virtual void TakeHit(float amount, Vector2 hitPoint, Vector2 hitDirection) {
+        // Here we can use the additional parameters to instantiate a particle system with some positional context
         TakeDamage(amount);
     }
 
     public virtual void TakeDamage(float amount) {
+        Debug.Log("Enemy taking " + amount + " damage. Total health remaining: " + (currentHealth - amount));
         currentHealth -= amount;
 
         if (currentHealth <= 0 && !dead) {
