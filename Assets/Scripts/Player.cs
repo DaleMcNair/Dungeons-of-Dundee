@@ -9,12 +9,11 @@ public class Player : Entity {
     PlayerController controller;
     WeaponController weaponController;
 
-    public float playerFacingAngle;
+    Vector2 previousMovementVelocity;
 
     public Animator animator;
 
     protected override void Start() {
-        playerFacingAngle = 270f;
         base.Start();
     }
 
@@ -30,48 +29,35 @@ public class Player : Entity {
 
         Vector2 movementVelocity = new Vector2(horizontal * currentSpeed, vertical * currentSpeed);
 
+        // Movement Direction stuff / animator cues
+
+        if (horizontal != 0 || vertical != 0) {
+            animator.SetBool("IsMoving", true);
+            animator.SetFloat("DirectionX", horizontal);
+            animator.SetFloat("DirectionY", vertical);
+            previousMovementVelocity = movementVelocity;
+        }
+        else {
+            animator.SetBool("IsMoving", false);
+        }
+
         // Attacking Input
         if (Input.GetMouseButtonDown(0)) {
             if (EventSystem.current && EventSystem.current.IsPointerOverGameObject()) {
                 return;
             }
             else {
-                weaponController.Attack(movementVelocity);
+                if (horizontal == 0 && vertical == 0) {
+                    weaponController.Attack(previousMovementVelocity);
+
+                }
+                else {
+                    weaponController.Attack(movementVelocity);
+                }
             }
         }
 
-        // Movement Direction stuff
-
-        playerFacingAngle = GetFacingDirection(movementVelocity);
-
-        // Animator cues
-
-
-        if (horizontal != 0 || vertical != 0) {
-            animator.SetBool("IsMoving", true);
-            animator.SetFloat("DirectionX", horizontal);
-            animator.SetFloat("DirectionY", vertical);
-
-        }
-        else {
-            animator.SetBool("IsMoving", false);
-        }
-
         controller.Move(movementVelocity);
-    }
-
-    float GetFacingDirection(Vector2 vel) {
-        // Atan2 returns radians
-        float angleRadians = Mathf.Atan2(vel.y, vel.x);
-
-        // Convert to degrees
-        float angleDegrees = angleRadians * Mathf.Rad2Deg;
-
-        if (angleDegrees < 0) {
-            angleDegrees += 360;
-        }
-
-        return angleDegrees;
     }
 
     public override void Die() {
