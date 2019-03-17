@@ -25,7 +25,8 @@ public class Weapon : MonoBehaviour {
     Transform activeProjectileSpawn;
 
     public void Attack(Vector2 facing) {
-        activeProjectileSpawn = GetSpawner();
+        Debug.Log("facing: " + facing);
+        activeProjectileSpawn = GetSpawner(facing);
 
         Vector2 projectileDirection = new Vector2(activeProjectileSpawn.position.x, activeProjectileSpawn.position.y) + facing.normalized;
         if (Time.time > nextAttackTime) {
@@ -46,12 +47,9 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    Transform GetSpawner() {
-        //get the vector representing the mouse's position relative to the point...
-        Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
+    Transform GetSpawner(Vector2 facing) {
         //use atan2 to get the angle; Atan2 returns radians
-        float angleRadians = Mathf.Atan2(v.y, v.x);
+        float angleRadians = Mathf.Atan2(facing.y, facing.x);
 
         //convert to degrees
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
@@ -67,13 +65,13 @@ public class Weapon : MonoBehaviour {
             return projectileSpawnRight;
         }
         else if (angleDegrees > 225) {
-            return projectileSpawnTop;
+            return projectileSpawnBottom;
         }
         else if (angleDegrees > 135) {
             return projectileSpawnLeft;
         }
         else if (angleDegrees > 45) {
-            return projectileSpawnBottom;
+            return projectileSpawnTop;
         }
         return projectileSpawnRight;
     }
