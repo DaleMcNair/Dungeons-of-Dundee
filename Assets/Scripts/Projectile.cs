@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
+    public ParticleSystem impactParticle;
     public LayerMask collisionMask;
     float speed = 15f;
     float damage = 1f;
@@ -41,6 +42,7 @@ public class Projectile : MonoBehaviour {
         if (hit.Length > 0) {
             for (int i = 0; i < hit.Length; i++) {
                 OnHitObject(hit[i].collider, hit[i].point);
+                Destroy(Instantiate(impactParticle.gameObject, hit[i].point, Quaternion.identity), impactParticle.main.startLifetime.constant);
             }
         }
     }
