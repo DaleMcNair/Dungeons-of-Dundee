@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomGenerator : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class RoomGenerator : MonoBehaviour {
+    public enum RoomTheme { Normal, Royal, Etc }
+    public RoomTheme roomTheme;
+    public int x, y; // Room Size
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

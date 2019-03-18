@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8416562658607329491}
   - component: {fileID: 8416562658607329490}
   - component: {fileID: 8416562658607329489}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ProjectileParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4797,8 +4797,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1962270225
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
