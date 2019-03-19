@@ -18,8 +18,8 @@ TagManager:
   - Enemy
   - Obstacle
   - Wall
-  - 
-  - 
+  - Entity
+  - Effect
   - 
   - 
   - 
@@ -41,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 1408497807
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3773606969
+    locked: 0
+  - name: Entity
+    uniqueID: 2814386975
+    locked: 0
+  - name: Effects
+    uniqueID: 1962270225
     locked: 0

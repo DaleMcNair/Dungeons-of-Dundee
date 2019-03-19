@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dacba36cd2d23594196b24489454d504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
-  maxHealth: 5
+  startingHealth: 500
+  maxHealth: 500
   currentSpeed: 0
   defaultSpeed: 4
   corpse: {fileID: 8750486122999274158, guid: e737603a9831d114785d70820d4cfe04, type: 3}
