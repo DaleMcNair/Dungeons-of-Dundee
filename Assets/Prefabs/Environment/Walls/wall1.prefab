@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2197425505947964337}
   - component: {fileID: 8875392133392974223}
   - component: {fileID: 8191951458380253485}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018431061454601239}
   - component: {fileID: 6272137938626695811}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ProjectileCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
