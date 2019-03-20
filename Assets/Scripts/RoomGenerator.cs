@@ -8,17 +8,14 @@ public class RoomGenerator : MonoBehaviour {
     public enum RoomTheme { Normal, Royal, Etc }
     public RoomTheme roomTheme;
 
-    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
+    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
     int[] rotations = { 0, 90, 180, 270 };
 
     List<Coord> allTileCoords;
     Transform[,] tileMap;
     float tileSize = 1f;
 
-
-
     public void GenerateRoom() {
-        Debug.Log("hm");
         tileMap = new Transform[map.mapSize.x, map.mapSize.y];
 
 
@@ -39,7 +36,7 @@ public class RoomGenerator : MonoBehaviour {
         Transform mapHolder = new GameObject(holderName).transform;
         mapHolder.parent = transform;
 
-        // Spawning Tiles
+        // Spawn Floor Tiles
         for (int x = 0; x < map.mapSize.x; x++) {
             for (int y = 0; y < map.mapSize.y; y++) {
                 Vector2 tilePosition = CoordToPosition(x, y);
@@ -65,14 +62,14 @@ public class RoomGenerator : MonoBehaviour {
 
         // Spawn Left Walls
         for (int y = (-map.mapSize.y / 2) - (int)tileSize; y < (map.mapSize.y / 2) + 3; y = y + 2) {
-            float xPos = (-map.mapSize.x / 2) + tileSize;
+            float xPos = (-map.mapSize.x / 2) - tileSize;
             GameObject newWall = Instantiate(wallPrefabsSide[Random.Range(0, wallPrefabsSide.Length)], new Vector2(xPos, y), Quaternion.identity);
             newWall.transform.parent = mapHolder;
         }
 
         // Spawn Right Walls
         for (int y = (-map.mapSize.y / 2) - (int)tileSize; y < (map.mapSize.y / 2) + 3; y = y + 2) {
-            float xPos = (map.mapSize.x / 2) + tileSize - 1.5f;
+            float xPos = (map.mapSize.x / 2) + tileSize;
             GameObject newWall = Instantiate(wallPrefabsSide[Random.Range(0, wallPrefabsSide.Length)], new Vector2(xPos, y), Quaternion.Euler(Vector3.forward * 180));
             newWall.transform.parent = mapHolder;
         }
