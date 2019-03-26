@@ -8,7 +8,7 @@ public class RoomGenerator : MonoBehaviour {
     public enum RoomTheme { Normal, Royal, Etc }
     public RoomTheme roomTheme;
 
-    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
+    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, outerTopWallPrefabs, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
     int[] rotations = { 0, 90, 180, 270 };
 
     List<Coord> allTileCoords;
@@ -49,8 +49,22 @@ public class RoomGenerator : MonoBehaviour {
         // Spawn Top Walls
         for (int x = (-map.mapSize.x / 2) + (int)tileSize; x < map.mapSize.x / 2 + tileSize; x = x + 2) {
             float yPos = (map.mapSize.y / 2) + tileSize;
+            float topYPos = (map.mapSize.y / 2) + tileSize + tileSize * 2;
+
+            // Spawn Corners
+            if (x == (-map.mapSize.x / 2) + (int)tileSize) {
+                GameObject leftCornerWall = Instantiate(wallPrefabsTopCorner[Random.Range(0, wallPrefabsTopCorner.Length)], new Vector2(x - tileSize * 2, yPos), Quaternion.identity);
+                GameObject rightCornerWall = Instantiate(wallPrefabsTopCorner[Random.Range(0, wallPrefabsTopCorner.Length)], new Vector2(map.mapSize.x / 2 + tileSize, yPos), Quaternion.identity);
+                rightCornerWall.GetComponent<SpriteRenderer>().flipX = true;
+                leftCornerWall.transform.parent = mapHolder;
+                rightCornerWall.transform.parent = mapHolder;
+            }
+
+
             GameObject newWall = Instantiate(wallPrefabsTop[Random.Range(0, wallPrefabsTop.Length)], new Vector2(x, yPos), Quaternion.identity);
+            GameObject newTopWall = Instantiate(outerTopWallPrefabs[Random.Range(0, outerTopWallPrefabs.Length)], new Vector2(x, topYPos), Quaternion.identity);
             newWall.transform.parent = mapHolder;
+            newTopWall.transform.parent = mapHolder;
         }
 
         // Spawn Bottom Walls
@@ -61,16 +75,17 @@ public class RoomGenerator : MonoBehaviour {
         }
 
         // Spawn Left Walls
-        for (int y = (-map.mapSize.y / 2) - (int)tileSize; y < (map.mapSize.y / 2) + 3; y = y + 2) {
+        for (int y = (-map.mapSize.y / 2) + (int)tileSize; y < (map.mapSize.y / 2) + tileSize; y = y + 2) {
             float xPos = (-map.mapSize.x / 2) - tileSize;
             GameObject newWall = Instantiate(wallPrefabsSide[Random.Range(0, wallPrefabsSide.Length)], new Vector2(xPos, y), Quaternion.identity);
             newWall.transform.parent = mapHolder;
         }
 
         // Spawn Right Walls
-        for (int y = (-map.mapSize.y / 2) - (int)tileSize; y < (map.mapSize.y / 2) + 3; y = y + 2) {
+        for (int y = (-map.mapSize.y / 2) + (int)tileSize; y < (map.mapSize.y / 2); y = y + 2) {
             float xPos = (map.mapSize.x / 2) + tileSize;
-            GameObject newWall = Instantiate(wallPrefabsSide[Random.Range(0, wallPrefabsSide.Length)], new Vector2(xPos, y), Quaternion.Euler(Vector3.forward * 180));
+            GameObject newWall = Instantiate(wallPrefabsSide[Random.Range(0, wallPrefabsSide.Length)], new Vector2(xPos, y), Quaternion.identity);
+            newWall.GetComponent<SpriteRenderer>().flipX = true;
             newWall.transform.parent = mapHolder;
         }
     }
