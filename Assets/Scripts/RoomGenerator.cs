@@ -8,7 +8,7 @@ public class RoomGenerator : MonoBehaviour {
     public enum RoomTheme { Normal, Royal, Etc }
     public RoomTheme roomTheme;
 
-    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, outerTopWallPrefabs, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
+    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, wallPrefabsBottomCorner, outerTopWallPrefabs, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
     int[] rotations = { 0, 90, 180, 270 };
 
     List<Coord> allTileCoords;
@@ -70,6 +70,16 @@ public class RoomGenerator : MonoBehaviour {
         // Spawn Bottom Walls
         for (int x = (-map.mapSize.x / 2) + (int)tileSize; x < map.mapSize.x / 2 + tileSize; x = x + 2) {
             float yPos = (-map.mapSize.y / 2) - tileSize;
+
+            // Spawn Corners
+            if (x == (-map.mapSize.y / 2) + tileSize) {
+                GameObject leftCornerWall = Instantiate(wallPrefabsBottomCorner[0], new Vector2(-map.mapSize.x / 2 - tileSize, yPos), Quaternion.identity);
+                GameObject rightCornerWall = Instantiate(wallPrefabsBottomCorner[0], new Vector2(map.mapSize.x / 2 + tileSize, yPos), Quaternion.identity);
+                leftCornerWall.GetComponent<SpriteRenderer>().flipX = true;
+                leftCornerWall.transform.parent = mapHolder;
+                rightCornerWall.transform.parent = mapHolder;
+            }
+
             GameObject newWall = Instantiate(wallPrefabsBottom[Random.Range(0, wallPrefabsBottom.Length)], new Vector2(x, yPos), Quaternion.identity);
             newWall.transform.parent = mapHolder;
         }
@@ -78,6 +88,7 @@ public class RoomGenerator : MonoBehaviour {
         for (int y = (-map.mapSize.y / 2) + (int)tileSize; y < (map.mapSize.y / 2) + tileSize; y = y + 2) {
             float xPos = (-map.mapSize.x / 2) - tileSize;
             GameObject newWall = Instantiate(wallPrefabsSide[Random.Range(0, wallPrefabsSide.Length)], new Vector2(xPos, y), Quaternion.identity);
+            newWall.GetComponent<BoxCollider2D>().offset = new Vector2(tileSize * .75f, 0);
             newWall.transform.parent = mapHolder;
         }
 
