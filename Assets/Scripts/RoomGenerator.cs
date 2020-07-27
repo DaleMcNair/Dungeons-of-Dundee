@@ -8,7 +8,7 @@ public class RoomGenerator : MonoBehaviour {
     public enum RoomTheme { Normal, Royal, Etc }
     public RoomTheme roomTheme;
 
-    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, wallPrefabsBottomCorner, outerTopWallPrefabs, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
+    public GameObject[] floorPrefabs, wallPrefabsTop, wallPrefabsBottom, wallPrefabsSide, wallPrefabsTopCorner, outerTopCornerWall, wallPrefabsBottomCorner, outerTopWallPrefabs, doorPrefabsTop, doorPrefabsBottom, doorPrefabsSide, obstacles;
     int[] rotations = { 0, 90, 180, 270 };
 
     List<Coord> allTileCoords;
@@ -58,13 +58,19 @@ public class RoomGenerator : MonoBehaviour {
                 rightCornerWall.GetComponent<SpriteRenderer>().flipX = true;
                 leftCornerWall.transform.parent = mapHolder;
                 rightCornerWall.transform.parent = mapHolder;
+                Debug.Log("parsing");
             }
 
+            GameObject newTopLeftCornerWall = Instantiate(outerTopCornerWall[Random.Range(0, outerTopCornerWall.Length)], new Vector2(x - tileSize * 2, topYPos), Quaternion.identity);
+            GameObject newTopRightCornerWall = Instantiate(outerTopCornerWall[Random.Range(0, outerTopCornerWall.Length)], new Vector2(map.mapSize.x / 2 + tileSize, topYPos), Quaternion.identity);
+            newTopRightCornerWall.GetComponent<SpriteRenderer>().flipX = true;
 
             GameObject newWall = Instantiate(wallPrefabsTop[Random.Range(0, wallPrefabsTop.Length)], new Vector2(x, yPos), Quaternion.identity);
             GameObject newTopWall = Instantiate(outerTopWallPrefabs[Random.Range(0, outerTopWallPrefabs.Length)], new Vector2(x, topYPos), Quaternion.identity);
             newWall.transform.parent = mapHolder;
             newTopWall.transform.parent = mapHolder;
+            newTopLeftCornerWall.transform.parent = mapHolder;
+            newTopRightCornerWall.transform.parent = mapHolder;
         }
 
         // Spawn Bottom Walls

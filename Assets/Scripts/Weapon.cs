@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour {
         //angleDegrees will be in the range (-180,180].
         //I like normalizing to [0,360) myself, but this is optional..
         if (angleDegrees < 0)
-            angleDegrees += 360;
+            angleDegrees += 180;
 
         Debug.Log(angleDegrees);
 

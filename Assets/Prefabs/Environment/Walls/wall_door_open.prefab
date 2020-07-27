@@ -10,8 +10,14 @@ PrefabInstance:
     - target: {fileID: 2251807595629209320, guid: 43ddce4a3add97744bd74d390521ac06,
         type: 3}
       propertyPath: m_Name
-      value: wall1
+      value: wall_door_open
       objectReference: {fileID: 0}
+    - target: {fileID: 4333059655524654480, guid: 43ddce4a3add97744bd74d390521ac06,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b37deb1c524426498a65bddbdb2334e,
+        type: 3}
     - target: {fileID: 6446751174264197038, guid: 43ddce4a3add97744bd74d390521ac06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,11 +73,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4333059655524654480, guid: 43ddce4a3add97744bd74d390521ac06,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5b37deb1c524426498a65bddbdb2334e,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43ddce4a3add97744bd74d390521ac06, type: 3}

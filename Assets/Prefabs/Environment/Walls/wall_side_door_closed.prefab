@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3422864296629964330, guid: 8af71c4051bf5e343b52750f4512dd38,
         type: 3}
       propertyPath: m_Name
-      value: Wall Left
+      value: wall_side_door_closed
       objectReference: {fileID: 0}
     - target: {fileID: 3422864296629964332, guid: 8af71c4051bf5e343b52750f4512dd38,
         type: 3}
