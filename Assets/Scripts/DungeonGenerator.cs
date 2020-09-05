@@ -115,11 +115,12 @@ public class DungeonGenerator : MonoBehaviour
         SpawnPortal();
         SpawnWaypoints();
         SpawnEnemyHubPositions();
-        EnemySpawner.instance.SpawnAllEnemies(enemyPositions);
 
         FillGaps();
 
         FillWalls();
+
+        EnemySpawner.instance.SpawnAllEnemies(enemyPositions);
     }
 
     private void ClearDungeon()
