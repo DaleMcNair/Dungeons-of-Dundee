@@ -71,12 +71,13 @@ SpriteRenderer:
   m_SortingLayerID: -1480580321
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a4743a409521b944fa40b385994687a8, type: 3}
+  m_Sprite: {fileID: 5109513543256946621, guid: a4743a409521b944fa40b385994687a8,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.3333334, y: 1.3333334}
+  m_Size: {x: 1.4090909, y: 1.7272727}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -148,7 +149,7 @@ MonoBehaviour:
   corpse: {fileID: 0}
   currentState: 0
   lastStateChange: 0
-  enemyType: 2
+  enemyType: 0
   damage: 1
   timeBetweenAttacks: 1000
   animator: {fileID: 0}

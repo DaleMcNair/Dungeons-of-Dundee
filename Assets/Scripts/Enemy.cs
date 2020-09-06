@@ -1,20 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class Enemy : Entity {
-    public enum EnemyState
-    {
-        idle,
-        running,
-        attacking
-    }
 
-    public EnemyState currentState;
-    public float lastStateChange = 0f;
+    public StateMachine stateMachine;
 
-    public enum EnemyType { Spell, Ranged, Melee };
+    public enum EnemyType { Caster, Ranged, Melee, Hybrid };
 
     public EnemyType enemyType;
 
@@ -49,7 +43,7 @@ public class Enemy : Entity {
             animator = _animator;
         }
 
-        setCurrentState(EnemyState.idle);
+        stateMachine.ChangeState(new IdleState(this));
     }
 
     protected override void Start() {
@@ -71,28 +65,9 @@ public class Enemy : Entity {
                 }
             }
         }
-
-
-        if (animator != null)
-        {
-            if (currentSpeed > 0)
-            {
-                animator.SetBool("IsMoving", true);
-            }
-            else
-            {
-                animator.SetBool("IsMoving", false);
-            }
-        }
     }
 
     void OnTargetDeath() {
         hasTarget = false;
-    }
-
-    private void setCurrentState(EnemyState state)
-    {
-        lastStateChange = Time.time;
-        currentState = state;
     }
 }
