@@ -5,9 +5,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class Enemy : Entity {
-
-    public StateMachine stateMachine;
-
     public enum EnemyType { Caster, Ranged, Melee, Hybrid };
 
     public EnemyType enemyType;
@@ -25,7 +22,11 @@ public class Enemy : Entity {
     float myCollisionRadius;
     float targetCollisionRadius;
 
+    [HideInInspector]
     public Animator animator;
+
+    public StateMachine stateMachine = new StateMachine();
+    private float lastStateChange;
 
     private void Awake() {
         if (GameObject.FindGameObjectWithTag("Player") != null) {
@@ -55,16 +56,17 @@ public class Enemy : Entity {
     }
 
     private void Update() {
-        if (enemyType == EnemyType.Melee && hasTarget) {
-            if (Time.time > nextAttackTime) {
-                float sqrDstToTarget = (target.position - transform.position).sqrMagnitude;
-                if (sqrDstToTarget < Mathf.Pow(attackDistanceThreshold + myCollisionRadius + targetCollisionRadius, 2)) {
-                    targetEntity.TakeDamage(damage);
-                    Debug.Log("Enemy attacked player for " + damage + " damage. Player has " + targetEntity.currentHealth + " remaining.");
-                    nextAttackTime = Time.time + timeBetweenAttacks / 1000;
-                }
-            }
-        }
+        stateMachine.Update();
+        //if (enemyType == EnemyType.Melee && hasTarget) {
+        //    if (Time.time > nextAttackTime) {
+        //        float sqrDstToTarget = (target.position - transform.position).sqrMagnitude;
+        //        if (sqrDstToTarget < Mathf.Pow(attackDistanceThreshold + myCollisionRadius + targetCollisionRadius, 2)) {
+        //            targetEntity.TakeDamage(damage);
+        //            Debug.Log("Enemy attacked player for " + damage + " damage. Player has " + targetEntity.currentHealth + " remaining.");
+        //            nextAttackTime = Time.time + timeBetweenAttacks / 1000;
+        //        }
+        //    }
+        //}
     }
 
     void OnTargetDeath() {

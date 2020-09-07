@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RecoveringState : IState
 {
-    Enemy owner;
+    Enemy enemy;
 
-    public RecoveringState(Enemy owner) { this.owner = owner; }
+    public RecoveringState(Enemy enemy) { this.enemy = enemy; }
 
     public void Enter()
     {

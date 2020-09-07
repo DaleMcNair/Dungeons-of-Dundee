@@ -2,23 +2,23 @@
 
 public class IdleState : IState
 {
-    Enemy owner;
+    Enemy enemy;
 
-    public IdleState(Enemy owner) { this.owner = owner; }
+    public IdleState(Enemy enemy) { this.enemy = enemy; }
 
     public void Enter()
     {
         Debug.Log("Entering Idle State");
-        owner.animator.SetBool("IsMoving", false);
+        enemy.animator.SetBool("IsMoving", false);
     }
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Executing Idle State");
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Exiting Idle State");
     }
 }

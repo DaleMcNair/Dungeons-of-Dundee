@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AttackingState : IState
 {
-    Enemy owner;
+    Enemy enemy;
 
-    public AttackingState(Enemy owner) { this.owner = owner; }
+    public AttackingState(Enemy enemy) { this.enemy = enemy; }
 
     public void Enter()
     {

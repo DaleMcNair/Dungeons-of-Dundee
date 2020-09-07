@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MovingState : IState
 {
-    Enemy owner;
+    Enemy enemy;
 
-    public MovingState(Enemy owner) { this.owner = owner; }
+    public MovingState(Enemy enemy) { this.enemy = enemy; }
 
     public void Enter()
     {
         Debug.Log("Entering Moving State");
-        owner.animator.SetBool("IsMoving", true);
+        enemy.animator.SetBool("IsMoving", true);
     }
 
     public void Execute()
