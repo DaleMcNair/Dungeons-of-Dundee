@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour, IDamageable {
+public abstract class Entity : MonoBehaviour, IDamageable {
     public float startingHealth, maxHealth;
     public float currentHealth { get; protected set; }
 
@@ -36,7 +36,7 @@ public class Entity : MonoBehaviour, IDamageable {
         }
     }
 
-    void RecoverHealth(int amount) {
+    public virtual void RecoverHealth(float amount) {
         currentHealth += amount;
 
         if (currentHealth > maxHealth) {
@@ -44,11 +44,11 @@ public class Entity : MonoBehaviour, IDamageable {
         }
     }
 
-    void IncreaseMaxHealth(int amount) {
+    public virtual void IncreaseMaxHealth(int amount) {
         maxHealth += amount;
     }
 
-    void DecreaseMaxHealth(int amount) {
+    public virtual void DecreaseMaxHealth(int amount) {
         maxHealth -= amount;
     }
 
