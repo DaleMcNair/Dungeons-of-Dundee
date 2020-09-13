@@ -10,4 +10,9 @@ public class Goblin : Enemy
     {
         tween = GetComponentInChildren<GoblinTween>();
     }
+
+    public virtual void Attack ()
+    {
+
+    }
 }

@@ -1,4 +1,6 @@
-﻿public class GoblinWizard : Goblin
+﻿using UnityEditorInternal;
+
+public class GoblinWizard : Goblin
 {
     public GoblinWizardType type;
 
@@ -8,5 +10,10 @@
         tween.StopTween();
     }
 
-    
+    public override void Attack()
+    {
+        base.Attack();
+
+        base.stateMachine.ChangeState(new AimingState());
+    }
 }
