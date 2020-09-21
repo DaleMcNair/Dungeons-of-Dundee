@@ -7,30 +7,36 @@ using UnityEngine;
 public class GoblinTween : MonoBehaviour
 {
     GameObject go;
-    bool animate = true;
+    Vector2 originalPosition;
+    Quaternion originalRotation;
 
     private void Awake()
     {
         go = gameObject;
-    }
-    void Start()
-    {
-        StartTween();
+        originalPosition = go.transform.localPosition;
+        originalRotation = go.transform.localRotation;
     }
 
     public void StartTween()
     {
-        animate = true;
         StartCoroutine("GoblinAnimate");
     }
     public void StopTween()
     {
-        animate = false;
+        StopCoroutine("GoblinAnimate");
+        ResetPosition();
+        Debug.Log("Stopped coroutine: " + originalPosition + " ---------- " + transform.localPosition);
+    }
+
+    void ResetPosition ()
+    {
+        transform.localPosition = new Vector2(0, 0);
+        transform.localRotation = new Quaternion(0, 0, 0, 0);
     }
 
     public IEnumerator GoblinAnimate()
     {
-        while (animate)
+        while (true)
         {
             iTween.MoveTo(go, iTween.Hash(
                 "position", new Vector3(0, 0.25f),
@@ -82,14 +88,14 @@ public class GoblinTween : MonoBehaviour
 
             iTween.MoveTo(go, iTween.Hash(
                 "position", new Vector3(0, 0),
-                "time", animate ? 0.25f : 0.1f,
+                "time",  0.25f,
                 "easeType", iTween.EaseType.easeInSine,
                 "isLocal", true
             ));
 
             iTween.RotateTo(go, iTween.Hash(
-                "rotation", new Vector3(0, 0, animate ? -10 : 0),
-                "time", animate ? 0.25f : 0.1f,
+                "rotation", new Vector3(0, 0, -10),
+                "time",  0.25f,
                 "easetype", iTween.EaseType.linear,
                 "islocal", true
             ));
@@ -97,5 +103,6 @@ public class GoblinTween : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
 
+        Debug.Log("End of coroutine");
     }
 }

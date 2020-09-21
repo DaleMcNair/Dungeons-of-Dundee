@@ -64,9 +64,6 @@ public class DungeonGenerator : MonoBehaviour
     private GameObject portal;
 
     [SerializeField]
-    private GameObject player;
-
-    [SerializeField]
     private Tile redTile;
     public GameObject waypointInactive;
     public GameObject waypointActive;
@@ -79,7 +76,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private int roomRate = 15;
     [SerializeField]
-    private int maxRouteLength;
+    private int maxRouteLength = 10;
     [SerializeField]
     private int maxRoutes = 20;
 

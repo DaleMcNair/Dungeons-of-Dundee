@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -521360327
-  m_SortingLayer: 2
+  m_SortingLayerID: 238501057
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 105169053199506356, guid: bc0104d7799925f46a7ef78f33e27839, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -117,11 +117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bdb639990fef14d9c822a10bbe2368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactSprite: {fileID: 0}
   impactParticle: {fileID: 8416562658607329490, guid: 0ea876fe7a9712c48934745433d6a286,
     type: 3}
   collisionMask:
     serializedVersion: 2
     m_Bits: 3586
+  speed: 10
+  damage: 10
 --- !u!198 &6518180359398184708
 ParticleSystem:
   m_ObjectHideFlags: 0

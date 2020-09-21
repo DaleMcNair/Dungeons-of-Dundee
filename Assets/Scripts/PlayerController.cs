@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum PlayerState { Idle, Moving };
@@ -16,7 +17,8 @@ public class PlayerController : MonoBehaviour {
 
     // Use fixed delta to account for dropped frames when moving our character
     void FixedUpdate() {
-        myRigidbody.MovePosition(myRigidbody.position + velocity * Time.fixedDeltaTime);
+        myRigidbody.velocity = velocity;
+        //myRigidbody.MovePosition(myRigidbody.position + velocity * Time.fixedDeltaTime);
     }
 
     public void Move(Vector2 _velocity) {

@@ -180,7 +180,7 @@ Material:
     - _ZoomUvAmount: 0.5
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorChangeNewCol: {r: 1, g: 0, b: 0.09470558, a: 1}
+    - _ColorChangeNewCol: {r: 1, g: 0.22352943, b: 0.039215688, a: 1}
     - _ColorChangeTarget: {r: 0.37254903, g: 0.80392164, b: 0.8941177, a: 1}
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
@@ -194,6 +194,6 @@ Material:
     - _GreyscaleTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.509434, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.8113208, g: 0.11164653, b: 0.019134922, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}

@@ -2,7 +2,7 @@
 
 public class StateMachine
 {
-    IState currentState;
+    public IState currentState;
 
     public void ChangeState(IState newState)
     {

@@ -17,7 +17,7 @@ public abstract class Entity : MonoBehaviour, IDamageable {
 
     // public ParticleSystem deathParticle --- Placeholder lol, add this Sprint2
 
-    protected virtual void Start() {
+    public virtual void Start() {
         currentHealth = startingHealth;
         currentSpeed = defaultSpeed;
     }
@@ -28,7 +28,6 @@ public abstract class Entity : MonoBehaviour, IDamageable {
     }
 
     public virtual void TakeDamage(float amount) {
-        Debug.Log("Enemy taking " + amount + " damage. Total health remaining: " + (currentHealth - amount));
         currentHealth -= amount;
 
         if (currentHealth <= 0 && !dead) {

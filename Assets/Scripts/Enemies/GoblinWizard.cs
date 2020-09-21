@@ -1,19 +1,45 @@
-﻿using UnityEditorInternal;
+﻿using UnityEngine;
+using UnityEngine.XR;
 
 public class GoblinWizard : Goblin
 {
     public GoblinWizardType type;
 
-    // Update is called once per frame
-    void Update()
+    public GameObject projectile;
+
+    public GameObject aimingParticleGameObject;
+
+    public override void Awake()
     {
-        tween.StopTween();
+        base.Awake();
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        base.Update();
     }
 
     public override void Attack()
     {
         base.Attack();
 
-        base.stateMachine.ChangeState(new AimingState());
+        if (target)
+        {
+            Vector2 targetPos = target.transform.position;
+            Vector2 direction = targetPos - (Vector2)transform.position;
+            Quaternion projectileRotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+
+            Instantiate(projectile, firePoint.transform.position, projectileRotation);
+
+            if (type == GoblinWizardType.Default)
+            {
+                Quaternion projectileRotation2 = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 25, Vector3.forward);
+                Instantiate(projectile, firePoint.transform.position, projectileRotation2);
+
+                Quaternion projectileRotation3 = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 25, Vector3.forward);
+                Instantiate(projectile, firePoint.transform.position, projectileRotation3);
+            }
+        }
     }
 }

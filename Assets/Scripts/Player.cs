@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,14 +19,21 @@ public class Player : Entity {
 
     public Animator animator;
 
+    public float aggroRadius;
+    Collider2D[] enemiesInRange;
 
-    protected override void Start() {
-        base.Start();
-    }
+    public event System.Action<bool> OnAggro;
 
-    private void Awake() {
+    private void Awake()
+    {
         controller = GetComponent<PlayerController>();
         weaponController = GetComponent<WeaponController>();
+    }
+
+    public override void Start() {
+        base.Start();
+
+        StartCoroutine("EnemyAggroRangeCheck");
     }
 
     void Update() {
@@ -76,28 +84,51 @@ public class Player : Entity {
     void SetDirection(float mouseAngle) {
         if (mouseAngle < 45 || mouseAngle >= 315)
         {
-            Debug.Log("Left");
+            //Left
             animator.SetInteger("MoveDirection", 4);
         }
         else if (mouseAngle > 225)
         {
-            Debug.Log("Up");
+            //Up
             animator.SetInteger("MoveDirection", 1);
         }
         else if (mouseAngle > 135)
         {
-            Debug.Log("Right");
+            //Right
             animator.SetInteger("MoveDirection", 2);
         }
         else
         {
-            Debug.Log("Down");
+            //Down
             animator.SetInteger("MoveDirection", 3);
         }
     }
 
     public override void Die() {
+        StopAllCoroutines();
         animator.SetBool("IsDead", true);
         base.Die();
+    }
+
+    public IEnumerator EnemyAggroRangeCheck()
+    {
+        LayerMask enemyMask = LayerMask.GetMask("Enemy");
+
+        while (true)
+        {
+            enemiesInRange = Physics2D.OverlapCircleAll(transform.position, aggroRadius, enemyMask);
+
+                foreach (Collider2D e in enemiesInRange)
+                {
+                    Enemy enemy = e.GetComponent<Enemy>();
+
+                    if (enemy != null)
+                    {
+                        enemy.SetInRange(true);
+                    }
+                }
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

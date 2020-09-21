@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GoblinTween))]
 public class Goblin : Enemy
 {
+    [HideInInspector]
     public GoblinTween tween;
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         tween = GetComponentInChildren<GoblinTween>();
     }
 
-    public virtual void Attack ()
+    public override void Attack ()
     {
 
+    }
+
+    public override void Start()
+    {
+        base.Start();
     }
 }

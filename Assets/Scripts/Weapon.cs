@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour {
     Transform activeProjectileSpawn;
 
     public void Attack(Vector2 facing) {
-        Debug.Log("facing: " + facing);
+        //Debug.Log("facing: " + facing);
         activeProjectileSpawn = GetSpawner(facing);
 
         Vector2 projectileDirection = new Vector2(activeProjectileSpawn.position.x, activeProjectileSpawn.position.y) + facing.normalized;
@@ -58,8 +58,6 @@ public class Weapon : MonoBehaviour {
         //I like normalizing to [0,360) myself, but this is optional..
         if (angleDegrees < 0)
             angleDegrees += 180;
-
-        Debug.Log(angleDegrees);
 
         if (angleDegrees > 315) {
             return projectileSpawnRight;

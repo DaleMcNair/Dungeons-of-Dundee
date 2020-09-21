@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1627454567897564211
 Transform:
   m_ObjectHideFlags: 0
@@ -4729,7 +4729,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1962270225
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -4763,9 +4763,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 611199336428154158}
-  - component: {fileID: 611199336428154156}
   - component: {fileID: 611199336428154155}
   - component: {fileID: 611199336428154153}
+  - component: {fileID: 7527153410071060484}
+  - component: {fileID: 4826588287459950732}
   m_Layer: 9
   m_Name: Goblin Arcane Wizard
   m_TagString: Untagged
@@ -4786,30 +4787,11 @@ Transform:
   m_Children:
   - {fileID: 7708628427454763877}
   - {fileID: 2132981916736749191}
+  - {fileID: 4618711892064984835}
+  - {fileID: 968553797177124768}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &611199336428154156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611199336428154154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a3fa302eec23540927a269000bbb4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  maxHealth: 3
-  currentSpeed: 0
-  defaultSpeed: 3
-  corpse: {fileID: 0}
-  enemyType: 0
-  damage: 1
-  timeBetweenAttacks: 1000
-  animator: {fileID: 0}
 --- !u!70 &611199336428154155
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4842,6 +4824,119 @@ CircleCollider2D:
   m_Offset: {x: 0.12, y: -0.34812465}
   serializedVersion: 2
   m_Radius: 0.31854212
+--- !u!114 &7527153410071060484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611199336428154154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f807851ecdbee446bc298ca5f477c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 60
+  maxHealth: 60
+  currentSpeed: 0
+  defaultSpeed: 5
+  corpse: {fileID: 0}
+  enemyType: 0
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 35840
+  lineOfSightDistance: 15
+  aimTime: 3
+  recoveryTime: 1.5
+  damage: 30
+  attackRange: 13
+  firePoint: {fileID: 3294636460373456782}
+  firePointFlipped: {fileID: 3065102227905003042}
+  timeBetweenAttacks: 500
+  tween: {fileID: 0}
+  type: 2
+  projectile: {fileID: 2966203052463314747, guid: 36eb127cfc037074d94ef87dcc7fc071,
+    type: 3}
+  aimingParticleGameObject: {fileID: 545139842117258942}
+--- !u!95 &4826588287459950732
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611199336428154154}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 833af3d4a13086e4d9ff2f09f0b2e606, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &3065102227905003042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968553797177124768}
+  m_Layer: 9
+  m_Name: FirePointFlipped
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968553797177124768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065102227905003042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.496, y: 0.073, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 611199336428154158}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3294636460373456782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4618711892064984835}
+  m_Layer: 9
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4618711892064984835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294636460373456782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.496, y: 0.073, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 611199336428154158}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9146215444417091583
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,7 +5008,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1480580321
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 5109513543256946621, guid: a4743a409521b944fa40b385994687a8,
     type: 3}

@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Chaos Shadow Wizard
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA OUTBASE8DIR_ON OUTBASE_ON _OUTLINE8DIRECTIONS_ON
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA GLITCH_ON OUTBASE8DIR_ON OUTBASE_ON OUTDIST_ON
+    _OUTLINE8DIRECTIONS_ON _OUTLINEDISTORTTOGGLE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -49,14 +50,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:
         m_Texture: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
         m_Texture: {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShineMask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 253ade5030af1b643bf9a54cceb26f01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -91,8 +92,8 @@ Material:
     - _FlickerPercent: 0.05
     - _GhostColorBoost: 1
     - _GhostTransparency: 0
-    - _GlitchAmount: 3
-    - _GlitchSize: 1
+    - _GlitchAmount: 1.47
+    - _GlitchSize: 2.27
     - _Glow: 10
     - _GlowTexUsed: 0
     - _GradBlend: 1
@@ -132,10 +133,10 @@ Material:
     - _OnlyOutline: 0
     - _Outline8Directions: 1
     - _OutlineAlpha: 1
-    - _OutlineDistortAmount: 0.5
-    - _OutlineDistortTexXSpeed: 5
-    - _OutlineDistortTexYSpeed: 5
-    - _OutlineDistortToggle: 0
+    - _OutlineDistortAmount: 0.252
+    - _OutlineDistortTexXSpeed: 1
+    - _OutlineDistortTexYSpeed: 1
+    - _OutlineDistortToggle: 1
     - _OutlineGlow: 1
     - _OutlineIsPixel: 0
     - _OutlinePixelWidth: 1
@@ -150,19 +151,19 @@ Material:
     - _PosterizeNumColors: 17.4
     - _PosterizeOutline: 0
     - _RandomSeed: 0
-    - _RectSize: 1
+    - _RectSize: 1.51
     - _RotateUvAmount: 0
     - _RoundWaveSpeed: 2
     - _RoundWaveStrength: 0.7
     - _ShadowAlpha: 0.5
     - _ShadowX: 0.1
     - _ShadowY: -0.05
-    - _ShakeUvSpeed: 2.5
-    - _ShakeUvX: 1.5
-    - _ShakeUvY: 1
-    - _ShineGlow: 1
-    - _ShineLocation: 0.5
-    - _ShineWidth: 0.1
+    - _ShakeUvSpeed: 0.22
+    - _ShakeUvX: 0.44
+    - _ShakeUvY: 0.27
+    - _ShineGlow: 0.3
+    - _ShineLocation: 0.173
+    - _ShineWidth: 0.05
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TwistUvAmount: 1
@@ -193,6 +194,6 @@ Material:
     - _GreyscaleTintColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.26037562, g: 0.0012459978, b: 0.26415092, a: 1}
+    - _OutlineColor: {r: 0.18586309, g: 0, b: 0.18867922, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShineColor: {r: 0.6603774, g: 0.05918475, b: 0.47468597, a: 1}

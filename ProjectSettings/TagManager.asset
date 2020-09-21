@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - wall
   - Grid
+  - AimingGameObject
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Entity
   - Effect
   - Projectile
-  - 
+  - Player
   - 
   - 
   - 
@@ -44,9 +45,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Projectile
-    uniqueID: 238501057
-    locked: 0
   - name: Obstacles
     uniqueID: 3773606969
     locked: 0
@@ -55,6 +53,9 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 1962270225
+    locked: 0
+  - name: Projectile
+    uniqueID: 238501057
     locked: 0
   - name: Ground
     uniqueID: 1408497807

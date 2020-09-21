@@ -5,21 +5,30 @@ using UnityEngine;
 public class AttackingState : IState
 {
     Enemy enemy;
+    bool attacked = false;
 
     public AttackingState(Enemy enemy) { this.enemy = enemy; }
 
     public void Enter()
     {
-        Debug.Log("Entering Attacking State");
+        if (enemy is GoblinWizard)
+        {
+            enemy.animator.SetTrigger("Attacking");
+        }
     }
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
+        if (!attacked)
+        {
+            enemy.Attack();
+            attacked = true;
+        }
+
+        enemy.stateMachine.ChangeState(new RecoveringState(enemy));
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
     }
 }

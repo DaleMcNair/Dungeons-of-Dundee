@@ -10,6 +10,7 @@ public class MovingState : IState
 
     public void Enter()
     {
+        enemy.animator.SetTrigger("Moving");
         Debug.Log("Entering Moving State");
         enemy.animator.SetBool("IsMoving", true);
     }
