@@ -22,13 +22,8 @@ PrefabInstance:
     - target: {fileID: 2452686952453380415, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2530004995737619132, guid: f95e0822af2a3a244bb54a2e6309a702,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7d4f7f4b9f4986e439d3c8354b71a1c6, type: 2}
     - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
       propertyPath: m_LocalPosition.x

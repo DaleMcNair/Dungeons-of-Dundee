@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class RepositioningState : IState
 {
+    Enemy enemy;
+    GoblinTween tween = null;
     int repositionedCount = 0;
+    public RepositioningState(Enemy enemy) { this.enemy = enemy; }
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        if (enemy is Goblin)
+        {
+            tween = enemy.GetComponentInChildren<GoblinTween>();
+            tween.StartTween();
+        }
     }
 
     public void Execute()
@@ -18,6 +25,6 @@ public class RepositioningState : IState
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        if (enemy is Goblin) tween.StopTween();
     }
 }

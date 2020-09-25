@@ -17,8 +17,7 @@ public class AimingState : IState
 
         if (enemy is GoblinWizard)
         {
-            enemy.animator.SetTrigger("Aiming");
-            enemy.GetComponent<GoblinWizard>().aimingParticleGameObject.SetActive(true);
+             enemy.GetComponent<GoblinWizard>().aimingParticleGameObject.SetActive(true);
         }
     }
 

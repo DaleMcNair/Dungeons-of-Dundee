@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -9,29 +7,36 @@ public class GoblinTween : MonoBehaviour
     GameObject go;
     Vector2 originalPosition;
     Quaternion originalRotation;
+    Task animateTask;
 
     private void Awake()
     {
         go = gameObject;
         originalPosition = go.transform.localPosition;
         originalRotation = go.transform.localRotation;
+        animateTask = new Task(GoblinAnimate(), false);
     }
 
     public void StartTween()
     {
-        StartCoroutine("GoblinAnimate");
+        animateTask.Finished += delegate (bool manual) {
+            ResetPosition();
+        };
+        animateTask.Start();
     }
     public void StopTween()
     {
-        StopCoroutine("GoblinAnimate");
-        ResetPosition();
-        Debug.Log("Stopped coroutine: " + originalPosition + " ---------- " + transform.localPosition);
+        if (animateTask.Running)
+        {
+            iTween.Stop();
+            animateTask.Stop();
+        }
     }
 
     void ResetPosition ()
     {
-        transform.localPosition = new Vector2(0, 0);
-        transform.localRotation = new Quaternion(0, 0, 0, 0);
+        transform.localPosition = originalPosition;
+        transform.localRotation = originalRotation;
     }
 
     public IEnumerator GoblinAnimate()
@@ -102,7 +107,5 @@ public class GoblinTween : MonoBehaviour
 
             yield return new WaitForSeconds(0.3f);
         }
-
-        Debug.Log("End of coroutine");
     }
 }
