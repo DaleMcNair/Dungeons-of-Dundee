@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!70 &6806381663808401622
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074814200905146714}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.04, y: -0.01}
+  m_Size: {x: 0.56, y: 1.15}
+  m_Direction: 0
 --- !u!114 &4967317519042459895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,10 +35,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 773737165126068897, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 773737165126068897, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 2452686952453380415, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524262393844008021, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: graphMask.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838028771775904448, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838028771775904448, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
@@ -84,8 +125,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chaos Shadow Wizard
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: aimTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8255224185478831444, guid: 43a4c8187e0d46b4b96f96697ede29b4,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 4146704000032580676, guid: f95e0822af2a3a244bb54a2e6309a702, type: 3}
+    - {fileID: 9052543923682478290, guid: f95e0822af2a3a244bb54a2e6309a702, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f95e0822af2a3a244bb54a2e6309a702, type: 3}
+--- !u!1 &8074814200905146714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5787271184389782980, guid: f95e0822af2a3a244bb54a2e6309a702,
+    type: 3}
+  m_PrefabInstance: {fileID: 2332588359317396638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8872117478308050834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6593009365111204620, guid: f95e0822af2a3a244bb54a2e6309a702,

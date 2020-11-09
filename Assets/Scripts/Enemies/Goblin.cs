@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class Goblin : Enemy
 {
     [HideInInspector]
     public GoblinTween tween;
+
     public override void Awake()
     {
         base.Awake();

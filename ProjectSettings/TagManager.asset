@@ -8,6 +8,8 @@ TagManager:
   - wall
   - Grid
   - AimingGameObject
+  - Pathfinder
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,9 +26,9 @@ TagManager:
   - Entity
   - Effect
   - Projectile
+  - PlayerMovement
   - Player
-  - 
-  - 
+  - Pit
   - 
   - 
   - 
@@ -59,4 +61,7 @@ TagManager:
     locked: 0
   - name: Projectile
     uniqueID: 238501057
+    locked: 0
+  - name: Pit
+    uniqueID: 2028765739
     locked: 0

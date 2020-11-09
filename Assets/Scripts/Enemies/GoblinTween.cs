@@ -15,13 +15,14 @@ public class GoblinTween : MonoBehaviour
         originalPosition = go.transform.localPosition;
         originalRotation = go.transform.localRotation;
         animateTask = new Task(GoblinAnimate(), false);
+
+        animateTask.Finished += delegate (bool manual) {
+            ResetPosition();
+        };
     }
 
     public void StartTween()
     {
-        animateTask.Finished += delegate (bool manual) {
-            ResetPosition();
-        };
         animateTask.Start();
     }
     public void StopTween()

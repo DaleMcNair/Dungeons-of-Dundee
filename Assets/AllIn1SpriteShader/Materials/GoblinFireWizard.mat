@@ -9,8 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: GoblinFireWizard
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: CHANGECOLOR_ON ETC1_EXTERNAL_ALPHA OUTBASE8DIR_ON OUTBASE_ON
-    _OUTLINE8DIRECTIONS_ON
+  m_ShaderKeywords: CHANGECOLOR_ON ETC1_EXTERNAL_ALPHA OUTBASE8DIR_ON _OUTLINE8DIRECTIONS_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -57,28 +56,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShineMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: f96aebb9bcd1e3b44bafbb23b1bdac88, type: 3}
+        m_Scale: {x: 6.12, y: 6.44}
+        m_Offset: {x: 2.04, y: 0.12}
     m_Floats:
     - _Alpha: 1
     - _AlphaCutoffValue: 0
     - _BillboardY: 0
     - _BlurHD: 0
     - _BlurIntensity: 10
-    - _ChromAberrAlpha: 0.4
-    - _ChromAberrAmount: 1
+    - _ChromAberrAlpha: 1
+    - _ChromAberrAmount: 0
     - _ClipUvDown: 0
     - _ClipUvLeft: 0
     - _ClipUvRight: 0
     - _ClipUvUp: 0
-    - _ColorChangeLuminosity: 0
-    - _ColorChangeTolerance: 0.445
-    - _ColorRampLuminosity: 0
+    - _ColorChangeLuminosity: 0.49
+    - _ColorChangeTolerance: 0.39
+    - _ColorRampLuminosity: 0.04
     - _ColorRampOutline: 0
     - _ColorSwapBlueLuminosity: 0.5
     - _ColorSwapGreenLuminosity: 0.5
-    - _ColorSwapRedLuminosity: 0.5
+    - _ColorSwapRedLuminosity: 0.61
     - _DistortAmount: 0.5
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
@@ -90,7 +89,7 @@ Material:
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
     - _FlickerPercent: 0.05
-    - _GhostColorBoost: 1
+    - _GhostColorBoost: 3.26
     - _GhostTransparency: 0
     - _GlitchAmount: 3
     - _GlitchSize: 1
@@ -103,7 +102,7 @@ Material:
     - _GrassWind: 20
     - _GreyscaleLuminosity: 0
     - _GreyscaleOutline: 0
-    - _HandDrawnAmount: 10
+    - _HandDrawnAmount: 5.3
     - _HandDrawnSpeed: 5
     - _HitEffectBlend: 1
     - _HitEffectGlow: 5
@@ -146,9 +145,9 @@ Material:
     - _OutlineTexYSpeed: 0
     - _OutlineWidth: 0.002
     - _PinchUvAmount: 0.35
-    - _PixelateSize: 32
+    - _PixelateSize: 512
     - _PosterizeGamma: 0.75
-    - _PosterizeNumColors: 8
+    - _PosterizeNumColors: 24
     - _PosterizeOutline: 0
     - _RandomSeed: 0
     - _RectSize: 1
@@ -161,11 +160,11 @@ Material:
     - _ShakeUvSpeed: 2.5
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
-    - _ShineGlow: 1
-    - _ShineLocation: 0.5
-    - _ShineWidth: 0.1
-    - _TextureScrollXSpeed: 1
-    - _TextureScrollYSpeed: 0
+    - _ShineGlow: 2
+    - _ShineLocation: 0.327
+    - _ShineWidth: 0.876
+    - _TextureScrollXSpeed: -2.4
+    - _TextureScrollYSpeed: 0.29
     - _TwistUvAmount: 1
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
@@ -180,8 +179,8 @@ Material:
     - _ZoomUvAmount: 0.5
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorChangeNewCol: {r: 1, g: 0.22352943, b: 0.039215688, a: 1}
-    - _ColorChangeTarget: {r: 0.37254903, g: 0.80392164, b: 0.8941177, a: 1}
+    - _ColorChangeNewCol: {r: 1, g: 0.039154656, b: 0, a: 1}
+    - _ColorChangeTarget: {r: 0.5137255, g: 0.10588236, b: 0.75294125, a: 1}
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
@@ -196,4 +195,4 @@ Material:
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0.8113208, g: 0.11164653, b: 0.019134922, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShineColor: {r: 1, g: 0, b: 0, a: 0.14901961}

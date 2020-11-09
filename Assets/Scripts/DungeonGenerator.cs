@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.Rendering;
 using System.ComponentModel;
 using UnityEditorInternal;
+using Pathfinding;
 
 [RequireComponent(typeof(EnemySpawner))]
 public class DungeonGenerator : MonoBehaviour
@@ -68,6 +69,7 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject waypointInactive;
     public GameObject waypointActive;
     public GameObject redboi;
+    public GameObject torchParticles;
     private int roomSpawns = 0;
 
     [Header("Map Settings")]
@@ -80,7 +82,6 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private int maxRoutes = 20;
 
-
     private int routeCount = 0;
     Dictionary<Vector2, float> portalPositions = new Dictionary<Vector2, float>();
     List<Vector2> spawnPoints = new List<Vector2>();
@@ -90,6 +91,15 @@ public class DungeonGenerator : MonoBehaviour
     private void Start()
     {
         GenerateDungeon();
+        InitialisePathfinding();
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i));
+        }
     }
 
     public void GenerateDungeon()
@@ -118,6 +128,25 @@ public class DungeonGenerator : MonoBehaviour
         FillWalls();
 
         EnemySpawner.instance.SpawnAllEnemies(enemyPositions);
+    }
+    private void InitialisePathfinding()
+    {
+        AstarData astar = AstarPath.active.data;
+
+        GridGraph gg = astar.gridGraph;
+
+        int width = wallMap.size.x;
+        int depth = wallMap.size.y;
+        float nodeSize = 1;
+
+        gg.center = wallMap.localBounds.center;
+        gg.SetDimensions(width, depth, nodeSize);
+
+        Physics2D.SyncTransforms();
+        Physics.SyncTransforms();
+        //AstarPath.active.Scan();
+        gg.Scan();
+
     }
 
     private void ClearDungeon()
@@ -183,7 +212,7 @@ public class DungeonGenerator : MonoBehaviour
 
                     if (tileBelow != null)
                     {
-                        wallMap.SetTile(pos, GetTopWallTile());
+                        wallMap.SetTile(pos, GetTopWallTile(pos));
                         wallMap.SetTile(posAbove, topWallTilesAbove[0]);
 
                         if (tileAboveAbove)
@@ -245,13 +274,13 @@ public class DungeonGenerator : MonoBehaviour
 
                         else if (tileRight != null && tileLeft == null)
                         {
-                            wallMap.SetTile(pos, GetTopWallTile());
+                            wallMap.SetTile(pos, GetTopWallTile(pos));
                             wallMap.SetTile(posAbove, bottomRightCornerWallTile);
                         }
 
                         else if (tileRight == null && tileLeft != null)
                         {
-                            wallMap.SetTile(pos, GetTopWallTile());
+                            wallMap.SetTile(pos, GetTopWallTile(pos));
                             wallMap.SetTile(posAbove, bottomLeftCornerWallTile);
                         }
 
@@ -509,7 +538,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
-        Instantiate(portal, furthestPortal, Quaternion.identity);
+        Instantiate(portal, furthestPortal, Quaternion.identity, gameObject.transform);
     }
 
     private Tile GetGroundTile()
@@ -535,7 +564,7 @@ public class DungeonGenerator : MonoBehaviour
         for (int i = 0; i < spawnPoints.Count; i++) {
             if (i == 0)
             {
-                Instantiate(waypointActive, spawnPoints[i] + offset, Quaternion.identity);
+                Instantiate(waypointActive, spawnPoints[i] + offset, Quaternion.identity, gameObject.transform);
                 waypointPositions.Add(spawnPoints[i]);
             } else {
                 bool spawnWaypoint = true;
@@ -549,7 +578,7 @@ public class DungeonGenerator : MonoBehaviour
                 }
                 
                 if (spawnWaypoint) {
-                    Instantiate(waypointActive, spawnPoints[i] + offset, Quaternion.identity);
+                    Instantiate(waypointActive, spawnPoints[i] + offset, Quaternion.identity, gameObject.transform);
                     waypointPositions.Add(spawnPoints[i]);
                 }
             }
@@ -592,13 +621,20 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    private Tile GetTopWallTile()
+    private Tile GetTopWallTile(Vector3Int pos)
     {
         if (Random.Range(0, 100) < 90) {
             return topWallTiles[0];
         } else
         {
-            return topWallTiles[Random.Range(1, topWallTiles.Length)];
+            int random = Random.Range(1, topWallTiles.Length);
+
+            if (random == 1)
+            {
+                Instantiate(torchParticles, new Vector2(pos.x - 1.43f, pos.y - .62f), Quaternion.identity, gameObject.transform); // Weird pos due to placing the brazier particles over the right spot
+            }
+
+            return topWallTiles[random];
         }
     }
 }

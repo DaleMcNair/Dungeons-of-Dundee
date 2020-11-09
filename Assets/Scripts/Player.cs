@@ -15,12 +15,19 @@ public class Player : Entity {
 
     Vector2 movementVelocity;
     Vector2 previousMovementVelocity;
+    public float horizontal { get; private set; } 
+    public float vertical { get; private set; }
+
     Vector2 mousePos = new Vector2(0, 0);
 
     public Animator animator;
 
     public float aggroRadius;
     Collider2D[] enemiesInRange;
+    public LayerMask lineOfSightMask;
+    public float lineOfSightDistance;
+
+    DamageFlash damageFlash;
 
     public event System.Action<bool> OnAggro;
 
@@ -28,18 +35,19 @@ public class Player : Entity {
     {
         controller = GetComponent<PlayerController>();
         weaponController = GetComponent<WeaponController>();
+        damageFlash = GetComponentInChildren<DamageFlash>();
     }
 
     public override void Start() {
         base.Start();
 
-        StartCoroutine("EnemyAggroRangeCheck");
+        StartCoroutine(EnemyAggroRangeCheck());
     }
 
     void Update() {
         // Movement Input
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         // Mouse Input
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -76,8 +84,9 @@ public class Player : Entity {
         }
     }
 
-    private void LateUpdate()
+    public override void LateUpdate()
     {
+        base.LateUpdate();
         controller.Move(movementVelocity);
     }
 
@@ -104,6 +113,12 @@ public class Player : Entity {
         }
     }
 
+    public override void TakeDamage(float amount)
+    {
+        base.TakeDamage(amount);
+        damageFlash.enabled = true;
+    }
+
     public override void Die() {
         StopAllCoroutines();
         animator.SetBool("IsDead", true);
@@ -124,7 +139,18 @@ public class Player : Entity {
 
                     if (enemy != null)
                     {
-                        enemy.SetInRange(true);
+                        RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, lineOfSightDistance, lineOfSightMask);
+                        if (hit.collider != null)
+                        {
+                            //Debug.Log("There was a hit! :" + hit.collider.gameObject.name); 
+                            if (hit.collider.CompareTag("Enemy"))
+                            {
+                                enemy.SetAggro(true);
+                            } else
+                            {
+                                enemy.SetAggro(false);
+                            }
+                        }
                     }
                 }
 

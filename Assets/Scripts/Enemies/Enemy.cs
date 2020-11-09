@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
@@ -15,11 +16,14 @@ public class Enemy : Entity {
 
     public GameObject target { get; private set; }
     bool foundPlayer;
+    AILerp path;
+    AIDestinationSetter destination;
 
     public bool inRangeOfPlayer { get; private set; }
     public bool lineOfSightToPlayer { get; private set; }
     public LayerMask lineOfSightMask;
     public float lineOfSightDistance;
+    float outOfSightTimer = 0f;
 
     [HideInInspector]
     public bool attacking { get; private set; }
@@ -40,12 +44,15 @@ public class Enemy : Entity {
     public StateMachine stateMachine = new StateMachine();
 
     public virtual void Awake() {
-        if (GameObject.FindGameObjectWithTag("Player") != null) {
+        target = GameObject.FindGameObjectWithTag("Player");
+
+        if (target != null) {
             foundPlayer = true;
             lineOfSightToPlayer = false;
-            target = GameObject.FindGameObjectWithTag("Player");
-            //myCollisionRadius = GetComponent<CircleCollider2D>().radius;
-            //targetCollisionRadius = target.GetComponent<CircleCollider2D>().radius;
+            destination = FindObjectOfType<AIDestinationSetter>();
+            destination.target = target.transform;
+
+            path = GetComponent<AILerp>();
         }
 
         if (gameObject.TryGetComponent<Animator>(out Animator _animator))
@@ -58,7 +65,6 @@ public class Enemy : Entity {
 
     public override void Start() {
         base.Start();
-
 
         if (foundPlayer) {
             target.GetComponent<Player>().OnDeath += OnTargetDeath;
@@ -76,6 +82,11 @@ public class Enemy : Entity {
         stateMachine.Update();
     }
 
+    public override void LateUpdate()
+    {
+        base.LateUpdate();
+    }
+
     public virtual void Attack()
     {
         if (!lineOfSightToPlayer)
@@ -90,16 +101,19 @@ public class Enemy : Entity {
         stateMachine.ChangeState(new IdleState(this));
     }
 
-    public void SetInRange(bool inRange)
+    public void SetAggro(bool aggro)
     {
-        if (inRange)
+        if (aggro)
         {
             CheckLineOfSight();
             inRangeOfPlayer = true;
-        } else
+            path.canSearch = true;
+        }
+        else
         {
             // for now this can never be called
             inRangeOfPlayer = false;
+            path.canSearch = false;
         }
     }
 
@@ -108,7 +122,7 @@ public class Enemy : Entity {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, lineOfSightDistance, lineOfSightMask);
         if (hit.collider != null) 
         { 
-            Debug.Log("There was a hit! :" + hit.collider.gameObject.name); 
+            //Debug.Log("There was a hit! :" + hit.collider.gameObject.name); 
             lineOfSightToPlayer = hit.collider.CompareTag("Player"); 
         }
     }
