@@ -1,8 +1,7 @@
-﻿using Pathfinding;
+﻿ using Pathfinding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 using System.Security.Permissions;
 using UnityEditor.Animations;
 using UnityEditorInternal;
@@ -15,15 +14,13 @@ public class Enemy : Entity {
     public EnemyType enemyType;
 
     public GameObject target { get; private set; }
-    bool foundPlayer;
-    AILerp path;
+    AIPath path;
     AIDestinationSetter destination;
 
     public bool inRangeOfPlayer { get; private set; }
     public bool lineOfSightToPlayer { get; private set; }
     public LayerMask lineOfSightMask;
     public float lineOfSightDistance;
-    float outOfSightTimer = 0f;
 
     [HideInInspector]
     public bool attacking { get; private set; }
@@ -36,10 +33,9 @@ public class Enemy : Entity {
 
     public float timeBetweenAttacks;
 
-    float myCollisionRadius;
-    float targetCollisionRadius;
-
     public Animator animator { get; private set; }
+    Task checkLineOfSightTask;
+    Task waitForEndOfPath;
 
     public StateMachine stateMachine = new StateMachine();
 
@@ -47,12 +43,24 @@ public class Enemy : Entity {
         target = GameObject.FindGameObjectWithTag("Player");
 
         if (target != null) {
-            foundPlayer = true;
             lineOfSightToPlayer = false;
             destination = FindObjectOfType<AIDestinationSetter>();
             destination.target = target.transform;
 
-            path = GetComponent<AILerp>();
+            path = GetComponent<AIPath>();
+
+            checkLineOfSightTask = new Task(CheckLineOfSight(), false);
+            waitForEndOfPath = new Task(WaitForEndOfPath(), false);
+
+            checkLineOfSightTask.Finished += delegate (bool manual) {
+                waitForEndOfPath.Start();
+            };
+
+            waitForEndOfPath.Finished += delegate (bool manual) {
+                path.canSearch = false;
+                path.canMove = false;
+                stateMachine.ChangeState(new IdleState(this));
+            };
         }
 
         if (gameObject.TryGetComponent<Animator>(out Animator _animator))
@@ -66,20 +74,14 @@ public class Enemy : Entity {
     public override void Start() {
         base.Start();
 
-        if (foundPlayer) {
+        Debug.Log("target = " + target.gameObject.name);
+        if (target != null) {
             target.GetComponent<Player>().OnDeath += OnTargetDeath;
         }
     }
 
     public virtual void Update() {
-        if (inRangeOfPlayer && lineOfSightToPlayer)
-        {
-            if (stateMachine.currentState.ToString() == "IdleState")
-            {
-                stateMachine.ChangeState(new AimingState(this));
-            }
-        }
-        stateMachine.Update();
+        
     }
 
     public override void LateUpdate()
@@ -87,43 +89,71 @@ public class Enemy : Entity {
         base.LateUpdate();
     }
 
-    public virtual void Attack()
-    {
-        if (!lineOfSightToPlayer)
-        {
-            stateMachine.ChangeState(new IdleState(this));
-            Debug.Log("LoS was lost during casting");
-        }
-    }
+    public virtual void Attack() {}
 
     void OnTargetDeath() {
-        foundPlayer = false;
         stateMachine.ChangeState(new IdleState(this));
     }
 
-    public void SetAggro(bool aggro)
+    public void SetWithinRange()
     {
-        if (aggro)
+        if (LineOfSightCheck())
         {
-            CheckLineOfSight();
             inRangeOfPlayer = true;
             path.canSearch = true;
-        }
-        else
-        {
-            // for now this can never be called
-            inRangeOfPlayer = false;
-            path.canSearch = false;
+            path.canMove = true;
+
+            if (!checkLineOfSightTask.Running) checkLineOfSightTask.Start();
         }
     }
 
-    void CheckLineOfSight()
+    void CheckForAttack()
+    {
+        Debug.Log("Checking for attack for " + gameObject.name + " " + "... Range = " + Vector3.Distance(target.transform.position, transform.position));
+        inRangeOfPlayer = Vector3.Distance(target.transform.position, transform.position) < attackRange;
+        if (inRangeOfPlayer && lineOfSightToPlayer)
+        {
+            Debug.Log("In range... current state = " + stateMachine.currentState);
+            if (stateMachine.currentState.ToString() == "IdleState" || stateMachine.currentState.ToString() == "MovingState") 
+            {
+                Debug.Log("Begin attack");
+                checkLineOfSightTask.Stop();
+                stateMachine.ChangeState(new AimingState(this));
+            }
+        }
+        stateMachine.Update();
+    }
+
+    bool LineOfSightCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, lineOfSightDistance, lineOfSightMask);
-        if (hit.collider != null) 
-        { 
+        if (hit.collider != null)
+        {
             //Debug.Log("There was a hit! :" + hit.collider.gameObject.name); 
-            lineOfSightToPlayer = hit.collider.CompareTag("Player"); 
+            return hit.collider.CompareTag("Player");
+        }
+
+        checkLineOfSightTask.Stop();
+        return false;
+    }
+
+    IEnumerator CheckLineOfSight()
+    {
+        while (lineOfSightToPlayer)
+        {
+            CheckForAttack();
+            lineOfSightToPlayer = LineOfSightCheck();
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    IEnumerator WaitForEndOfPath()
+    {
+        bool reachedEndOfPath = false;
+
+        while (!reachedEndOfPath) {
+            reachedEndOfPath = path.reachedEndOfPath;
+            yield return new WaitForSeconds(0.25f); 
         }
     }
 }

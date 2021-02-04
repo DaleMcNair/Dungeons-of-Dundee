@@ -28,6 +28,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaderTypes: 4
+  normalStrenght: 5
+  normalSmoothing: 1
+  computingNormal: 0
 --- !u!1001 &2332588359317396638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,6 +71,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -82,6 +91,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -93,16 +107,6 @@ PrefabInstance:
     - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5787271184389782977, guid: f95e0822af2a3a244bb54a2e6309a702,
@@ -127,11 +131,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
         type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
-        type: 3}
       propertyPath: aimTime
       value: 1
       objectReference: {fileID: 0}
@@ -141,6 +140,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8255224185478831444, guid: 43a4c8187e0d46b4b96f96697ede29b4,
         type: 3}
+    - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826864095925781613, guid: f95e0822af2a3a244bb54a2e6309a702,
+        type: 3}
+      propertyPath: lineOfSightMask.m_Bits
+      value: 67584
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4146704000032580676, guid: f95e0822af2a3a244bb54a2e6309a702, type: 3}
     - {fileID: 9052543923682478290, guid: f95e0822af2a3a244bb54a2e6309a702, type: 3}

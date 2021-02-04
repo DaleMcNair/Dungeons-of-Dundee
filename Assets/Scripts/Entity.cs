@@ -41,7 +41,6 @@ public abstract class Entity : MonoBehaviour, IDamageable {
 
     public virtual void LateUpdate()
     {
-        Debug.Log("here we are");
         //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         if (spriteRenderer) { Debug.Log("got sprite"); spriteRenderer.sortingOrder = (int)Camera.main.WorldToScreenPoint(spriteRenderer.bounds.min).y * -1; }
     }

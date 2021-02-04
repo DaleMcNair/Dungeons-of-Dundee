@@ -139,18 +139,19 @@ public class Player : Entity {
 
                     if (enemy != null)
                     {
-                        RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, lineOfSightDistance, lineOfSightMask);
-                        if (hit.collider != null)
-                        {
-                            //Debug.Log("There was a hit! :" + hit.collider.gameObject.name); 
-                            if (hit.collider.CompareTag("Enemy"))
-                            {
-                                enemy.SetAggro(true);
-                            } else
-                            {
-                                enemy.SetAggro(false);
-                            }
-                        }
+                        enemy.SetWithinRange();
+                        //RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, lineOfSightDistance, lineOfSightMask);
+                        //if (hit.collider != null)
+                        //{
+                        //    //Debug.Log("There was a hit! :" + hit.collider.gameObject.name); 
+                        //    if (hit.collider.CompareTag("Enemy"))
+                        //    {
+                        //        enemy.SetAggro(true);
+                        //    } else
+                        //    {
+                        //        enemy.SetAggro(false);
+                        //    }
+                        //}
                     }
                 }
 

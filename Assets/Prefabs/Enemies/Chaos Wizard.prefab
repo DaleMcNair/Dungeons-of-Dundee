@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7826864095925781613}
   - component: {fileID: 3524262393844008021}
   - component: {fileID: 6407331081008829835}
-  - component: {fileID: 6986480273187475988}
+  - component: {fileID: 3227711098545255440}
+  - component: {fileID: 2463573781061018010}
   m_Layer: 9
   m_Name: Chaos Wizard
   m_TagString: Enemy
@@ -105,7 +106,7 @@ MonoBehaviour:
   enemyType: 0
   lineOfSightMask:
     serializedVersion: 2
-    m_Bits: 34816
+    m_Bits: 67584
   lineOfSightDistance: 20
   aimTime: 0
   recoveryTime: 5
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
---- !u!114 &6986480273187475988
+--- !u!114 &3227711098545255440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,20 +171,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 5787271184389782980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  repathRate: 0.5
+  radiusBackingField: 0.5
+  heightBackingField: 2
+  centerBackingField: 1
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 2
+  obstacleTimeHorizon: 2
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: 1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 0.5
+  debug: 0
+--- !u!114 &2463573781061018010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787271184389782980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radius: 0.6
+  height: 1
+  repathRate: 1
   canSearch: 0
-  canMove: 1
-  speed: 2
-  orientation: 0
+  canMove: 0
+  maxSpeed: 2
+  gravity: {x: 0, y: 0, z: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  orientation: 1
   enableRotation: 0
-  rotationSpeed: 10
-  interpolatePathSwitches: 0
-  switchPathInterpolationSpeed: 5
   targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 1
+  pickNextWaypointDist: 0.5
+  endReachedDistance: 0.5
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
 --- !u!1 &6593009365111204620
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +271,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -335,6 +377,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3748537
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.327159
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.327159
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.042
       objectReference: {fileID: 0}
@@ -347,6 +409,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
         type: 3}
@@ -365,16 +432,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -387,21 +444,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3748537
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.327159
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634084134329397895, guid: 4d91a59b5ffd99949bef666b2cff9e40,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.327159
       objectReference: {fileID: 0}
     - target: {fileID: 6801222473397797956, guid: 4d91a59b5ffd99949bef666b2cff9e40,
         type: 3}
@@ -420,13 +462,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6837228534510288156, guid: 4d91a59b5ffd99949bef666b2cff9e40,
         type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1480580321
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6837228534510288156, guid: 4d91a59b5ffd99949bef666b2cff9e40,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
+      propertyPath: m_SortingLayerID
+      value: -1480580321
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d91a59b5ffd99949bef666b2cff9e40, type: 3}

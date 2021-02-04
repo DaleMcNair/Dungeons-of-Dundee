@@ -14,7 +14,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private Tile[] groundTiles;
     [SerializeField]
-    
+
     [Header("Pit")]
     private Tile pitTile;
 
@@ -49,7 +49,7 @@ public class DungeonGenerator : MonoBehaviour
     private Tile sideWallLeftMid;
     [SerializeField]
     private Tile sideWallRightMid;
-    
+
     [SerializeField]
     private Tile botLeftWallTile;
     [SerializeField]
@@ -135,8 +135,8 @@ public class DungeonGenerator : MonoBehaviour
 
         GridGraph gg = astar.gridGraph;
 
-        int width = wallMap.size.x;
-        int depth = wallMap.size.y;
+        int width = pitMap.size.x;
+        int depth = pitMap.size.y;
         float nodeSize = 1;
 
         gg.center = wallMap.localBounds.center;
@@ -144,9 +144,20 @@ public class DungeonGenerator : MonoBehaviour
 
         Physics2D.SyncTransforms();
         Physics.SyncTransforms();
-        //AstarPath.active.Scan();
-        gg.Scan();
 
+        StartCoroutine(WaitToScan());
+    }
+
+    IEnumerator WaitToScan()
+    {
+        bool ran = false;
+        while (ran == false)
+        {
+            yield return new WaitForSeconds(0.5f);
+            AstarPath.active.Scan();
+            Debug.Log("Running scan");
+            ran = true;
+        }
     }
 
     private void ClearDungeon()
